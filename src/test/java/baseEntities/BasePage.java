@@ -1,33 +1,37 @@
 package baseEntities;
 
 import configuration.ReadProperties;
+import core.WaitsService;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 public abstract class BasePage {
+
     protected WebDriver driver;
+    protected WaitsService wait;
 
-    public BasePage(WebDriver driver, boolean isOpenedByUrl) {
+    public BasePage(WebDriver driver) {
+        this(driver, false);
+    }
+
+    public BasePage(WebDriver driver, boolean openPageByUrl) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        this.wait = new WaitsService(driver);
 
-        if (isOpenedByUrl) {
-            openByUrl();
+        if (openPageByUrl) {
+            openPageByUrl();
         }
     }
 
-    protected abstract WebElement getPageIdentifier();
-
+    protected abstract By getPageIdentifier();
     protected abstract String getPagePath();
 
-    public boolean isOpened() {
 
-        return getPageIdentifier().isDisplayed();
+    public Boolean isPageOpened() {
+        return wait.waitForVisibility(getPageIdentifier()).isDisplayed();
     }
 
-    public void openByUrl() {
-
-        driver.get(ReadProperties.getUrl() + getPagePath());
+    public String openPageByUrl(){
+        return ReadProperties.getUrl() + getPagePath();
     }
 }
