@@ -2,6 +2,7 @@ package pages;
 
 import baseEntities.BasePage;
 import models.Project;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,12 +13,8 @@ import java.util.List;
 
 public class DashboardPage extends BasePage {
     private final static String pagePath = "/index.php?/dashboard";
-
-    @FindBy(id = "sidebar-projects-add")
-    public WebElement addProjectSideButton;
-
-    @FindBy(xpath = "//a[text()='AQA_25_Test']")
-    public List<WebElement> projectsOnDashboard;
+    private final By addProjectSideButton = By.id("sidebar-projects-add");
+    private final By projectsOnDashboard = By.xpath("//a[text()='AQA_25_Test']");
 
 
     public DashboardPage(WebDriver driver, boolean isOpenedByUrl) {
@@ -25,7 +22,7 @@ public class DashboardPage extends BasePage {
     }
 
     @Override
-    protected WebElement getPageIdentifier() {
+    protected By getPageIdentifier() {
         return addProjectSideButton;
     }
 
@@ -34,15 +31,24 @@ public class DashboardPage extends BasePage {
         return pagePath;
     }
 
+
+    public WebElement getAddProjectSideButton() {
+        return wait.waitForVisibility(addProjectSideButton);
+    }
+
     public AddProjectPage clickAddProjectSideButton() {
-        addProjectSideButton.click();
+        getAddProjectSideButton().click();
         return new AddProjectPage(driver, true);
     }
 
-    public ProjectInfoPage clickProjectInGrid(Project project) {
+    // правильно ли? return (List<WebElement>) wait.waitForVisibility(projectsInGrid);
+    public List<WebElement> getProjectInGrid() {
+        return (List<WebElement>) wait.waitForVisibility(projectsOnDashboard);
+    }
 
+    public ProjectInfoPage clickProjectInGrid(Project project) {
         for (WebElement element :
-                projectsOnDashboard) {
+                getProjectInGrid()) {
             if (element.getText().trim().equals(project.getName())) {
                 element.click();
                 return new ProjectInfoPage(driver, false);

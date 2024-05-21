@@ -2,26 +2,23 @@ package pages.milestones;
 
 import baseEntities.BasePage;
 import models.Milestone;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 public class MilestonesOverviewPage extends BasePage {
 
-    @FindBy(className = "content-header-title")
-    public WebElement milestonesHeader;
-
-    @FindBy(className = "summary-title")
-    public List<WebElement> milestonesList;
+    private final By milestonesHeader = By.className("content-header-title");
+    private final By milestonesList = By.className("summary-title");
 
     public MilestonesOverviewPage(WebDriver driver, boolean isOpenedByUrl) {
         super(driver, isOpenedByUrl);
     }
 
     @Override
-    protected WebElement getPageIdentifier() {
+    protected By getPageIdentifier() {
         return milestonesHeader;
     }
 
@@ -30,9 +27,19 @@ public class MilestonesOverviewPage extends BasePage {
         return "";
     }
 
+    // нужен ли тут getMilestonesHeader если он нигде не используется?
+    public WebElement getMilestonesHeader() {
+        return wait.waitForVisibility(milestonesHeader);
+    }
+
+    // не уверен в правильности  return (List<WebElement>) wait.waitForVisibility(milestonesList);
+    public List<WebElement> getMilestonesList() {
+        return (List<WebElement>) wait.waitForVisibility(milestonesList);
+    }
+
     public boolean isMilestoneInGrid(Milestone milestone) {
         for (WebElement element :
-                milestonesList) {
+                getMilestonesList()) {
             if (element.getText().trim().equals(milestone.getName())) {
                 return true;
             }

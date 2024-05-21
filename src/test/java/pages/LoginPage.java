@@ -2,24 +2,23 @@ package pages;
 
 import baseEntities.BasePage;
 import models.User;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
-    @FindBy(id = "name")
-    public WebElement emailInput;
-    @FindBy(id = "password")
-    public WebElement passwordInput;
-    @FindBy(id = "button_primary")
-    public WebElement loginButton;
+
+    private final By emailInput = By.id("name");
+    private final By passwordInput = By.id("password");
+    private final By loginButton = By.id("button_primary");
 
     public LoginPage(WebDriver driver, boolean isOpenedByUrl) {
         super(driver, isOpenedByUrl);
     }
 
     @Override
-    protected WebElement getPageIdentifier() {
+    protected By getPageIdentifier() {
         return emailInput;
     }
 
@@ -28,18 +27,30 @@ public class LoginPage extends BasePage {
         return "";
     }
 
+    public WebElement getEmail() {
+        return wait.waitForVisibility(emailInput);
+    }
+
     public LoginPage enterEmail(String email) {
-        emailInput.sendKeys(email);
+        getEmail().sendKeys(email);
         return this;
+    }
+
+    public WebElement getPassword() {
+        return wait.waitForVisibility(passwordInput);
     }
 
     public LoginPage enterPassword(String password) {
-        passwordInput.sendKeys(password);
+        getPassword().sendKeys(password);
         return this;
     }
 
+    public WebElement getLoginButton() {
+        return wait.waitForVisibility(loginButton);
+    }
+
     public void clickLoginButton() {
-        loginButton.click();
+        getLoginButton().click();
     }
 
     public DashboardPage successfulLogIn(User user) {
