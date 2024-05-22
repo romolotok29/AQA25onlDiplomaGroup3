@@ -75,6 +75,7 @@ public class Milestone {
         return "Milestone{" +
                 "name='" + name + '\'' +
                 ", reference='" + reference + '\'' +
+                ", description='" + description + '\'' +
                 ", isCompleted=" + isCompleted +
                 '}';
     }
