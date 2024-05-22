@@ -27,14 +27,8 @@ public class MilestonesOverviewPage extends BasePage {
         return "";
     }
 
-    // нужен ли тут getMilestonesHeader если он нигде не используется?
-    public WebElement getMilestonesHeader() {
-        return wait.waitForVisibility(milestonesHeader);
-    }
-
-    // не уверен в правильности  return (List<WebElement>) wait.waitForVisibility(milestonesList);
     public List<WebElement> getMilestonesList() {
-        return (List<WebElement>) wait.waitForVisibility(milestonesList);
+        return wait.waitForAllVisibleElementsLocatedBy(milestonesList);
     }
 
     public boolean isMilestoneInGrid(Milestone milestone) {

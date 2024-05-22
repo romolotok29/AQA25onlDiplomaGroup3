@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.milestones.AddMilestonePage;
 
-
 public class ProjectInfoPage extends BasePage {
     private final By projectTitle = By.cssSelector(".content-header-title");
     private final By addMilestoneLink = By.id("sidebar-milestones-add");
@@ -26,18 +25,12 @@ public class ProjectInfoPage extends BasePage {
         return "";
     }
 
-
     public WebElement getAddMilestoneToProject() {
         return wait.waitForVisibility(addMilestoneLink);
     }
 
     public AddMilestonePage clickAddMilestoneToProject() {
         getAddMilestoneToProject().click();
-        return new AddMilestonePage (driver, false);
-    }
-
-    // нужен ли тут getprojectTitle если он нигде не используется?
-    public WebElement getprojectTitle() {
-        return wait.waitForVisibility(projectTitle);
+        return new AddMilestonePage(driver, false);
     }
 }

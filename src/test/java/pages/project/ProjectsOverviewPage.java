@@ -28,9 +28,8 @@ public class ProjectsOverviewPage extends BasePage {
         return pagePath;
     }
 
-    // правильно ли? return (List<WebElement>) wait.waitForVisibility(projectsInGrid);
     public List<WebElement> getProjectInGrid() {
-        return (List<WebElement>) wait.waitForVisibility(projectsInGrid);
+        return wait.waitForAllVisibleElementsLocatedBy(projectsInGrid);
     }
 
     public boolean isProjectInGrid(Project project) {
@@ -41,10 +40,5 @@ public class ProjectsOverviewPage extends BasePage {
             }
         }
         return false;
-    }
-
-    // нужен ли тут getProjectsGrid если он нигде не используется?
-    public WebElement getProjectsGrid() {
-        return wait.waitForVisibility(projectsGrid);
     }
 }

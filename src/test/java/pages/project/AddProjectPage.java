@@ -62,9 +62,12 @@ public class AddProjectPage extends BasePage {
         return this;
     }
 
-    // ругается, что нет метода .get в BY
+    public List<WebElement> getRadioButton() {
+        return wait.waitForAllVisibleElementsLocatedBy(showAnnouncementCheckbox);
+    }
+
     public AddProjectPage setProjectType(int index) {
-        modeRadioButtonsList.get(index).click();
+        getRadioButton().get(index).click();
         return this;
     }
 

@@ -14,8 +14,7 @@ import java.util.List;
 public class DashboardPage extends BasePage {
     private final static String pagePath = "/index.php?/dashboard";
     private final By addProjectSideButton = By.id("sidebar-projects-add");
-    private final By projectsOnDashboard = By.xpath("//a[text()='AQA_25_Test']");
-
+    private final By projectsOnDashboard = By.xpath("//a[contains (@href, 'projects/overview')]");
 
     public DashboardPage(WebDriver driver, boolean isOpenedByUrl) {
         super(driver, isOpenedByUrl);
@@ -41,9 +40,8 @@ public class DashboardPage extends BasePage {
         return new AddProjectPage(driver, true);
     }
 
-    // правильно ли? return (List<WebElement>) wait.waitForVisibility(projectsInGrid);
     public List<WebElement> getProjectInGrid() {
-        return (List<WebElement>) wait.waitForVisibility(projectsOnDashboard);
+        return wait.waitForAllVisibleElementsLocatedBy(projectsOnDashboard);
     }
 
     public ProjectInfoPage clickProjectInGrid(Project project) {
@@ -56,5 +54,4 @@ public class DashboardPage extends BasePage {
         }
         return null;
     }
-
 }
