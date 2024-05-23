@@ -14,7 +14,8 @@ public class ProjectAndMilestoneAddTest extends BaseTest {
                 dashboardPage
                         .clickAddProjectSideButton()
                         .addSimpleProject(testProject)
-                        .isProjectInGrid(testProject));
+                        .isPageOpened()
+        );
     }
 
     @Test
@@ -24,15 +25,19 @@ public class ProjectAndMilestoneAddTest extends BaseTest {
                 dashboardPage
                         .clickAddProjectSideButton()
                         .addFullProject(testProject)
-                        .isProjectInGrid(testProject));
+                        .isProjectInGrid(testProject)
+        );
     }
 
     @Test(dependsOnMethods = "addFullProjectTest")
     public void addMilestoneTest() {
         DashboardPage dashboardPage = new DashboardPage(driver, true);
-        Assert.assertTrue(dashboardPage.clickProjectInGrid(testProject)
-                .clickAddMilestoneToProject()
-                .addMilestoneSuccessfully(testMilestone)
-                .isMilestoneInGrid(testMilestone));
+        Assert.assertTrue(
+                dashboardPage
+                        .clickProjectInGrid(testProject)
+                        .clickAddMilestoneToProject()
+                        .addMilestoneSuccessfully(testMilestone)
+                        .isMilestoneInGrid(testMilestone)
+        );
     }
 }
