@@ -89,15 +89,7 @@ public class AddProjectPage extends BasePage {
         getAddProjectButton().click();
     }
 
-    public ProjectsOverviewPage addSimpleProject(Project project) {
-        this
-                .enterProjectName(project.getName())
-                .clickAddProjectButton();
-
-        return new ProjectsOverviewPage(driver, true);
-    }
-
-    public ProjectsOverviewPage addFullProject(Project project) {
+    public void fillProjectInfo(Project project) {
         this
                 .enterProjectName(project.getName())
                 .enterProjectAnnouncement(project.getAnnouncement())
@@ -105,7 +97,6 @@ public class AddProjectPage extends BasePage {
                 .setProjectType(project.getProjectType())
                 .setCasesApproval(project.isApprovalEnabled())
                 .clickAddProjectButton();
-
-        return new ProjectsOverviewPage(driver, true);
     }
+
 }
