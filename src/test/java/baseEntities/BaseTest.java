@@ -19,16 +19,20 @@ public class BaseTest {
 
     @BeforeTest
     public void setUpData() {
-        user = new User();
-        user.setEmail(ReadProperties.username());
-        user.setPassword(ReadProperties.password());
+        user = User
+                .builder()
+                .email(ReadProperties.username())
+                .password(ReadProperties.password())
+                .build();
 
-        testProject = new Project();
-        testProject.setName("AQA_25_Test");
-        testProject.setAnnouncement("announcement");
-        testProject.setIsAnnouncementShown(true);
-        testProject.setProjectType(0);
-        testProject.setIsApprovalEnabled(false);
+        testProject = Project
+                .builder()
+                .name("AQA_25_Test")
+                .announcement("Project announcement")
+                .isAnnouncementShown(true)
+                .projectType(0)
+                .isApprovalEnabled(true)
+                .build();
 
         testMilestone = new Milestone.Builder()
                 .withName("TestMilestone")

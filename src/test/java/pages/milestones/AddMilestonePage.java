@@ -77,11 +77,13 @@ public class AddMilestonePage extends BasePage {
     }
 
     public MilestonesOverviewPage addMilestoneSuccessfully(Milestone milestone) {
-        enterMilestoneName(milestone)
+        this
+                .enterMilestoneName(milestone)
                 .enterMilestoneReference(milestone)
                 .enterMilestoneDescription(milestone)
                 .selectMilestoneCompetence(milestone)
                 .clickAddButton();
+
         return new MilestonesOverviewPage(driver, false);
     }
 }

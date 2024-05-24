@@ -5,7 +5,6 @@ import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
 
@@ -54,9 +53,11 @@ public class LoginPage extends BasePage {
     }
 
     public DashboardPage successfulLogIn(User user) {
-        this.enterEmail(user.getEmail())
+        this
+                .enterEmail(user.getEmail())
                 .enterPassword(user.getPassword())
                 .clickLoginButton();
+
         return new DashboardPage(driver, true);
     }
 }

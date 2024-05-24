@@ -5,7 +5,6 @@ import models.Project;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
@@ -63,7 +62,7 @@ public class AddProjectPage extends BasePage {
     }
 
     public List<WebElement> getRadioButton() {
-        return wait.waitForAllVisibleElementsLocatedBy(showAnnouncementCheckbox);
+        return wait.waitForAllVisibleElementsLocatedBy(modeRadioButtonsList);
     }
 
     public AddProjectPage setProjectType(int index) {
@@ -91,17 +90,22 @@ public class AddProjectPage extends BasePage {
     }
 
     public ProjectsOverviewPage addSimpleProject(Project project) {
-        enterProjectName(project.getName())
+        this
+                .enterProjectName(project.getName())
                 .clickAddProjectButton();
+
         return new ProjectsOverviewPage(driver, true);
     }
 
     public ProjectsOverviewPage addFullProject(Project project) {
-        this.enterProjectAnnouncement(project.getAnnouncement())
+        this
+                .enterProjectName(project.getName())
+                .enterProjectAnnouncement(project.getAnnouncement())
                 .setShowAnnouncement(project.isAnnouncementShown())
                 .setProjectType(project.getProjectType())
                 .setCasesApproval(project.isApprovalEnabled())
-                .addSimpleProject(project);
+                .clickAddProjectButton();
+
         return new ProjectsOverviewPage(driver, true);
     }
 }

@@ -31,6 +31,7 @@ public class ProjectInfoPage extends BasePage {
 
     public AddMilestonePage clickAddMilestoneToProject() {
         getAddMilestoneToProject().click();
+
         return new AddMilestonePage(driver, false);
     }
 }
