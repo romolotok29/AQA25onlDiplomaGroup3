@@ -52,12 +52,11 @@ public class LoginPage extends BasePage {
         getLoginButton().click();
     }
 
-    public DashboardPage successfulLogIn(User user) {
+    public void fillUserInfo(User user) {
         this
                 .enterEmail(user.getEmail())
                 .enterPassword(user.getPassword())
                 .clickLoginButton();
-
-        return new DashboardPage(driver, true);
     }
+
 }

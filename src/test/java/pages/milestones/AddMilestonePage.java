@@ -5,8 +5,6 @@ import models.Milestone;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import core.WaitsService;
 
 
 public class AddMilestonePage extends BasePage {
@@ -72,18 +70,17 @@ public class AddMilestonePage extends BasePage {
         return wait.waitForVisibility(addMilestoneButton);
     }
 
-    public void clickAddButton() {
+    public void clickAddMilestoneButton() {
         getMilestoneAddButton().click();
     }
 
-    public MilestonesOverviewPage addMilestoneSuccessfully(Milestone milestone) {
+    public void fillMilestoneInfo(Milestone milestone) {
         this
                 .enterMilestoneName(milestone)
                 .enterMilestoneReference(milestone)
                 .enterMilestoneDescription(milestone)
                 .selectMilestoneCompetence(milestone)
-                .clickAddButton();
-
-        return new MilestonesOverviewPage(driver, false);
+                .clickAddMilestoneButton();
     }
+
 }

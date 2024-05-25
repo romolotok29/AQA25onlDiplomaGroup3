@@ -5,7 +5,7 @@ import models.Project;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pages.project.AddProjectPage;
+import org.openqa.selenium.interactions.Actions;
 import pages.project.ProjectInfoPage;
 
 import java.util.List;
@@ -34,23 +34,21 @@ public class DashboardPage extends BasePage {
         return wait.waitForVisibility(addProjectSideButton);
     }
 
-    public AddProjectPage clickAddProjectSideButton() {
-        getAddProjectSideButton().click();
-        return new AddProjectPage(driver, true);
-    }
-
     public List<WebElement> getProjectInGrid() {
         return wait.waitForAllVisibleElementsLocatedBy(projectsOnDashboard);
     }
 
-    public ProjectInfoPage clickProjectInGrid(Project project) {
+
+    public ProjectInfoPage clickOnProjectInGrid(Project project) {
         for (WebElement element :
                 getProjectInGrid()) {
             if (element.getText().trim().equals(project.getName())) {
                 element.click();
+
                 return new ProjectInfoPage(driver, false);
             }
         }
         return null;
     }
+
 }
