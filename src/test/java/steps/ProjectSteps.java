@@ -25,4 +25,12 @@ public class ProjectSteps extends BaseSteps {
 
         return new ProjectsOverviewPage(driver, false);
     }
+
+    public ProjectsOverviewPage deleteProjectSuccessfully(Project project) {
+        projectsOverviewPage.clickDeleteProjectButton();
+        projectsOverviewPage.clickDeleteConfirmationButton();
+        projectsOverviewPage.clickDeleteOKButton();
+
+        return projectsOverviewPage;
+    }
 }

@@ -14,6 +14,8 @@ public class DashboardPage extends BasePage {
     private final static String pagePath = "/index.php?/dashboard";
     private final By addProjectSideButton = By.id("sidebar-projects-add");
     private final By projectsOnDashboard = By.xpath("//a[contains (@href, 'projects/overview')]");
+    private final By copyToClipboardButton = By.xpath("//div[@tooltip-text='Copy to Clipboard']");
+    private final By copyToClipboardHiddenText = By.xpath("//p[contains(text(), 'Copy to Clipboard')]");
 
     public DashboardPage(WebDriver driver, boolean isOpenedByUrl) {
         super(driver, isOpenedByUrl);
@@ -29,7 +31,6 @@ public class DashboardPage extends BasePage {
         return pagePath;
     }
 
-
     public WebElement getAddProjectSideButton() {
         return wait.waitForVisibility(addProjectSideButton);
     }
@@ -38,6 +39,17 @@ public class DashboardPage extends BasePage {
         return wait.waitForAllVisibleElementsLocatedBy(projectsOnDashboard);
     }
 
+    public WebElement copyToClipboardButton() {
+        return wait.waitForVisibility(copyToClipboardButton);
+    }
+
+    public WebElement copyToClipboardHiddenText() {
+        return wait.waitForVisibility(copyToClipboardHiddenText);
+    }
+
+    public String showCopyToClipboardHiddenText() {
+        return copyToClipboardHiddenText().getText();
+    }
 
     public ProjectInfoPage clickOnProjectInGrid(Project project) {
         for (WebElement element :
@@ -49,6 +61,17 @@ public class DashboardPage extends BasePage {
             }
         }
         return null;
+    }
+
+    public String moveToElement() {
+        Actions actions = new Actions(driver);
+
+        actions
+                .moveToElement(copyToClipboardButton())
+                .build()
+                .perform();
+
+        return showCopyToClipboardHiddenText();
     }
 
 }
