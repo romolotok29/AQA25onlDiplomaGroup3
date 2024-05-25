@@ -29,4 +29,13 @@ public class MilestoneSteps extends BaseSteps {
 
         return new MilestonesOverviewPage(driver, false);
     }
+
+    public MilestonesOverviewPage addMilestoneWithFileUploadInside(Project project, Milestone milestone) {
+        dashboardPage.clickOnProjectInGrid(project);
+
+        clickAddMilestoneButton()
+                .fillMilestoneInfoWithFileUpload(milestone);
+
+        return new MilestonesOverviewPage(driver, false);
+    }
 }

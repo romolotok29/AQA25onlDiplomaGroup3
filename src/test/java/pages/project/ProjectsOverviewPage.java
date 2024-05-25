@@ -12,6 +12,11 @@ public class ProjectsOverviewPage extends BasePage {
     private final static String pagePath = "index.php?/admin/projects/overview";
     private final By projectsGrid = By.className("grid");
     private final By projectsInGrid = By.cssSelector(".hoverSensitive");
+    private final By deleteProjectButton = By.cssSelector(".icon-small-delete");
+    private final By deleteConfirmationButton = By.xpath
+            ("//strong[contains(text(), 'Yes, delete this project (cannot be undone)')]");
+    private final By deleteOKButton = By.xpath("//a[@data-testid='caseFieldsTabDeleteDialogButtonOk']");
+    private final By successfulDeleteMessage = By.cssSelector(".message-success");
 
     public ProjectsOverviewPage(WebDriver driver, boolean isOpenedByUrl) {
         super(driver, isOpenedByUrl);
@@ -31,6 +36,38 @@ public class ProjectsOverviewPage extends BasePage {
         return wait.waitForAllVisibleElementsLocatedBy(projectsInGrid);
     }
 
+    public WebElement getDeleteProjectButton() {
+        return wait.waitForVisibility(deleteProjectButton);
+    }
+
+    public void clickDeleteProjectButton() {
+        getDeleteProjectButton().click();
+    }
+
+    public WebElement getDeleteConfirmationButton() {
+        return wait.waitForVisibility(deleteConfirmationButton);
+    }
+
+    public void clickDeleteConfirmationButton() {
+        getDeleteConfirmationButton().click();
+    }
+
+    public WebElement getDeleteOKButton() {
+        return wait.waitForVisibility(deleteOKButton);
+    }
+
+    public void clickDeleteOKButton() {
+        getDeleteOKButton().click();
+    }
+
+    public WebElement getSuccessfulDeleteMessage() {
+        return wait.waitForVisibility(successfulDeleteMessage);
+    }
+
+    public String getDeleteText() {
+        return getSuccessfulDeleteMessage().getText();
+    }
+
     public boolean isProjectInGrid(Project project) {
         for (WebElement element :
                 getProjectInGrid()) {
@@ -40,4 +77,6 @@ public class ProjectsOverviewPage extends BasePage {
         }
         return false;
     }
+
+
 }
