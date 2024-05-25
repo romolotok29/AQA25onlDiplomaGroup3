@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Diplom Suite">
+    <test name="Smoke">
+        <classes>
+            <class name="tests.PositiveTests">
+                <methods>
+                    <include name="addFullProjectTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Regression">
+        <classes>
+            <class name="tests.PositiveTests">
+                <methods>
+                    <exclude name="addFullProjectTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
