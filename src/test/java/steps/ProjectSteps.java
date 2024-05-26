@@ -19,9 +19,19 @@ public class ProjectSteps extends BaseSteps {
         return new AddProjectPage(driver, true);
     }
 
+    public void fillProjectInfo(Project project) {
+        addProjectPage
+                .enterProjectName(project.getName())
+                .enterProjectAnnouncement(project.getAnnouncement())
+                .setShowAnnouncement(project.isAnnouncementShown())
+                .setProjectType(project.getProjectType())
+                .setCasesApproval(project.isApprovalEnabled())
+                .clickAddProjectButton();
+    }
+
     public ProjectsOverviewPage addProjectSuccessfully(Project project) {
-        clickAddProjectSideButton()
-                .fillProjectInfo(project);
+        clickAddProjectSideButton();
+        fillProjectInfo(project);
 
         return new ProjectsOverviewPage(driver, false);
     }

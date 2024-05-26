@@ -42,6 +42,7 @@ public class PositiveTests extends BaseTest {
 
     @Test
     public void hiddenTextTest() {
+
         DashboardPage dashboardPage = new DashboardPage(driver, false);
 
         Assert.assertEquals(
@@ -49,9 +50,7 @@ public class PositiveTests extends BaseTest {
         );
     }
 
-    // Почему-то выкидывает ElementNotInteractableException: element not interactable
-    // Тест падает на 135 строчке кода (AddMilestonePage, метод fileUploadInsideMilestone())
-    // Может я использую неверный локатор для .sendkeys(path)?
+    //Не можем найти нужный локатор
     @Test
     public void fileUploadTest() {
 
@@ -59,6 +58,16 @@ public class PositiveTests extends BaseTest {
                 milestoneSteps
                         .addMilestoneWithFileUploadInside(testProject, testMilestone)
                         .isMilestoneInGrid(testMilestone)
+        );
+    }
+
+    @Test
+    public void dialogWindowTest() {
+
+        dashboardPage.clickTopMenuSearchButton();
+
+        Assert.assertTrue(
+                dashboardPage.isDialogWindowDisplayed()
         );
     }
 }

@@ -1,7 +1,6 @@
 package pages.project;
 
 import baseEntities.BasePage;
-import models.Project;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +15,6 @@ public class AddProjectPage extends BasePage {
     private final By showAnnouncementCheckbox = By.id("show_announcement");
     private final By modeRadioButtonsList = By.name("suite_mode");
     private final By caseApprovalCheckbox = By.id("case_statuses_enabled");
-
 
     public AddProjectPage(WebDriver driver, boolean isOpenedByUrl) {
         super(driver, isOpenedByUrl);
@@ -87,16 +85,6 @@ public class AddProjectPage extends BasePage {
 
     public void clickAddProjectButton() {
         getAddProjectButton().click();
-    }
-
-    public void fillProjectInfo(Project project) {
-        this
-                .enterProjectName(project.getName())
-                .enterProjectAnnouncement(project.getAnnouncement())
-                .setShowAnnouncement(project.isAnnouncementShown())
-                .setProjectType(project.getProjectType())
-                .setCasesApproval(project.isApprovalEnabled())
-                .clickAddProjectButton();
     }
 
 }

@@ -12,7 +12,6 @@ import org.openqa.selenium.edge.EdgeOptions;
 import java.time.Duration;
 
 public class BrowsersService {
-
     private WebDriver driver = null;
     private DriverManagerType driverManagerType;
 
@@ -23,11 +22,7 @@ public class BrowsersService {
                 WebDriverManager.getInstance(driverManagerType).setup();
                 driver = new ChromeDriver(getChromeOptions());
                 break;
-            case "edge":
-                driverManagerType = DriverManagerType.EDGE;
-                WebDriverManager.getInstance(driverManagerType).setup();
-                driver = new EdgeDriver(getEdgeOptions());
-                break;
+
             default:
                 System.out.println("Browser " + ReadProperties.browserName() + " is not supported");
                 break;
@@ -49,16 +44,6 @@ public class BrowsersService {
         chromeOptions.addArguments("--silent");
         chromeOptions.addArguments("--incognito");
         return chromeOptions;
-
     }
 
-    private EdgeOptions getEdgeOptions() {
-        EdgeOptions edgeOptions = new EdgeOptions();
-        edgeOptions.addArguments("--disable-gpu");
-        edgeOptions.addArguments("--ignore-certificate-errors");
-        edgeOptions.addArguments("--silent");
-        edgeOptions.addArguments("--incognito");
-
-        return edgeOptions;
-    }
 }

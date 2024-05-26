@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-
 public class AddMilestonePage extends BasePage {
     private final By milestoneNameInput = By.id("name");
     private final By milestoneReferenceInput = By.id("reference");
@@ -15,8 +14,8 @@ public class AddMilestonePage extends BasePage {
     private final By addMilestoneButton = By.id("accept");
     private final By uploadFileInsideMilestone = By.id("entityAttachmentListEmptyIcon");
     private final By attachFileAddButton = By.id("libraryAddAttachment");
+    private final By filePreviewLocator = By.id("sortDropdown");
     private final By submitAttachButton = By.id("attachmentNewSubmit");
-
 
     public AddMilestonePage(WebDriver driver, boolean isOpenedByUrl) {
         super(driver, isOpenedByUrl);
@@ -81,6 +80,9 @@ public class AddMilestonePage extends BasePage {
     public WebElement getAttachFileAddButton() {
         return wait.waitForVisibility(attachFileAddButton);
     }
+    public WebElement getFilePreview() {
+        return wait.waitForVisibility(filePreviewLocator);
+    }
 
     public WebElement getSubmitAttachButton() {
         return wait.waitForVisibility(submitAttachButton);
@@ -98,28 +100,8 @@ public class AddMilestonePage extends BasePage {
         getSubmitAttachButton().click();
     }
 
-
     public void clickAddMilestoneButton() {
         getMilestoneAddButton().click();
-    }
-
-    public void fillMilestoneInfo(Milestone milestone) {
-        this
-                .enterMilestoneName(milestone)
-                .enterMilestoneReference(milestone)
-                .enterMilestoneDescription(milestone)
-                .selectMilestoneCompetence(milestone)
-                .clickAddMilestoneButton();
-    }
-
-    public void fillMilestoneInfoWithFileUpload(Milestone milestone) {
-        this
-                .enterMilestoneName(milestone)
-                .enterMilestoneReference(milestone)
-                .enterMilestoneDescription(milestone)
-                .selectMilestoneCompetence(milestone)
-                .fileUploadInsideMilestone()
-                .clickAddMilestoneButton();
     }
 
     public AddMilestonePage fileUploadInsideMilestone() {
@@ -127,18 +109,12 @@ public class AddMilestonePage extends BasePage {
         clickUploadFileInsideMilestoneButton();
         clickAttachFileAddButton();
 
-        String path = AddMilestonePage.class
-                .getClassLoader()
-                .getResource("Screenshot 2024-05-17 181529.png")
+        String path = AddMilestonePage.class.getClassLoader().getResource("Screenshot 2024-05-17 181529.png")
                 .getPath().substring(1);
 
-        getAttachFileAddButton().sendKeys(path);
-
+        getFilePreview().sendKeys(path);
         clickSubmitAttachButton();
 
         return this;
     }
-
-
-
 }

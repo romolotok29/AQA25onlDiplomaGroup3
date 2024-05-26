@@ -3,6 +3,7 @@ package baseEntities;
 import org.openqa.selenium.WebDriver;
 import pages.DashboardPage;
 import pages.LoginPage;
+import pages.milestones.AddMilestonePage;
 import pages.project.AddProjectPage;
 import pages.project.ProjectInfoPage;
 import pages.project.ProjectsOverviewPage;
@@ -15,6 +16,7 @@ public class BaseSteps {
     protected AddProjectPage addProjectPage;
     protected ProjectInfoPage projectInfoPage;
     protected ProjectsOverviewPage projectsOverviewPage;
+    protected AddMilestonePage addMilestonePage;
 
     public BaseSteps(WebDriver driver) {
         this.driver = driver;
@@ -24,5 +26,6 @@ public class BaseSteps {
         this.addProjectPage = new AddProjectPage(driver, true);
         this.projectInfoPage = new ProjectInfoPage(driver, false);
         this.projectsOverviewPage = new ProjectsOverviewPage(driver,false);
+        this.addMilestonePage = new AddMilestonePage(driver, false);
     }
 }

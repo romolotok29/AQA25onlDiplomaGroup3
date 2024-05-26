@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import pages.DashboardPage;
 import steps.LoginSteps;
 import steps.MilestoneSteps;
 import steps.ProjectSteps;
@@ -22,6 +23,7 @@ public class BaseTest {
     protected LoginSteps loginSteps;
     protected ProjectSteps projectSteps;
     protected MilestoneSteps milestoneSteps;
+    protected DashboardPage dashboardPage;
 
     @BeforeTest
     public void setUpData() {
@@ -56,6 +58,7 @@ public class BaseTest {
         loginSteps.successfulLogin(user);
         projectSteps = new ProjectSteps(driver);
         milestoneSteps = new MilestoneSteps(driver);
+        dashboardPage = new DashboardPage(driver, false);
     }
 
     @AfterMethod

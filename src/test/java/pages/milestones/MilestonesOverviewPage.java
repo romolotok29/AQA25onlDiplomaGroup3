@@ -5,11 +5,9 @@ import models.Milestone;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
 
 public class MilestonesOverviewPage extends BasePage {
-
     private final By milestonesHeader = By.className("content-header-title");
     private final By milestonesList = By.className("summary-title");
 

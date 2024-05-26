@@ -21,20 +21,39 @@ public class MilestoneSteps extends BaseSteps {
         return new AddMilestonePage(driver, false);
     }
 
+    public void fillMilestoneInfo(Milestone milestone) {
+        addMilestonePage
+                .enterMilestoneName(milestone)
+                .enterMilestoneReference(milestone)
+                .enterMilestoneDescription(milestone)
+                .selectMilestoneCompetence(milestone)
+                .clickAddMilestoneButton();
+    }
+
     public MilestonesOverviewPage addMilestoneSuccessfully(Project project, Milestone milestone) {
         dashboardPage.clickOnProjectInGrid(project);
 
-        clickAddMilestoneButton()
-                .fillMilestoneInfo(milestone);
+        clickAddMilestoneButton();
+        fillMilestoneInfo(milestone);
 
         return new MilestonesOverviewPage(driver, false);
+    }
+
+    public void fillMilestoneInfoWithFileUpload(Milestone milestone) {
+        addMilestonePage
+                .enterMilestoneName(milestone)
+                .enterMilestoneReference(milestone)
+                .enterMilestoneDescription(milestone)
+                .selectMilestoneCompetence(milestone)
+                .fileUploadInsideMilestone()
+                .clickAddMilestoneButton();
     }
 
     public MilestonesOverviewPage addMilestoneWithFileUploadInside(Project project, Milestone milestone) {
         dashboardPage.clickOnProjectInGrid(project);
 
-        clickAddMilestoneButton()
-                .fillMilestoneInfoWithFileUpload(milestone);
+        clickAddMilestoneButton();
+        fillMilestoneInfoWithFileUpload(milestone);
 
         return new MilestonesOverviewPage(driver, false);
     }

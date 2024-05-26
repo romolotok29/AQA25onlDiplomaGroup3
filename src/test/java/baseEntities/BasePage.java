@@ -26,7 +26,6 @@ public abstract class BasePage {
     protected abstract By getPageIdentifier();
     protected abstract String getPagePath();
 
-
     public Boolean isPageOpened() {
         return wait.waitForVisibility(getPageIdentifier()).isDisplayed();
     }
