@@ -6,14 +6,18 @@ import models.Milestone;
 import models.Project;
 import models.User;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import pages.DashboardPage;
 import steps.LoginSteps;
 import steps.MilestoneSteps;
 import steps.ProjectSteps;
+import utils.InvokedListener;
 
+@Listeners(InvokedListener.class)
 public class BaseTest {
 
     protected WebDriver driver;
@@ -51,8 +55,9 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void setUp() {
+    public void setUp(ITestContext iTestContext) {
         driver = new BrowsersService().getDriver();
+        this.setDriverToContext(iTestContext, driver);
         driver.get(ReadProperties.getUrl());
         loginSteps = new LoginSteps(driver);
         loginSteps.successfulLogin(user);
@@ -64,5 +69,13 @@ public class BaseTest {
     @AfterMethod
     public void quit() {
         driver.quit();
+    }
+
+    public static void setDriverToContext(ITestContext iTestContext, WebDriver driver){
+        iTestContext.setAttribute("WebDriver", driver);
+    }
+
+    public static WebDriver getDriverFromContext(ITestContext iTestContext){
+        return (WebDriver) iTestContext.getAttribute("WebDriver") ;
     }
 }

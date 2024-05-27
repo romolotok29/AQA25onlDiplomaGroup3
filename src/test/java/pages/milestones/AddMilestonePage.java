@@ -15,12 +15,14 @@ public class AddMilestonePage extends BasePage {
     private final By addMilestoneButton = By.id("accept");
     private final By uploadFileInsideMilestone = By.id("entityAttachmentListEmptyIcon");
     private final By attachFileAddButton = By.id("libraryAddAttachment");
-    private final By filePreviewLocator = By.id("sortDropdown");
+    private final By filePreviewLocator = By.xpath("/html/body/input[3]");
     private final By submitAttachButton = By.id("attachmentNewSubmit");
+    private final By selectFile = By.xpath("//div[@class='frolaAttachmentpop']/following-sibling::div/..//div[contains(@data-testid,'attachmentsTabAttachmentSelection')]");
 
     public AddMilestonePage(WebDriver driver) {
         this(driver, false);
     }
+
     public AddMilestonePage(WebDriver driver, boolean openPageByUrl) {
         super(driver, openPageByUrl);
     }
@@ -84,12 +86,13 @@ public class AddMilestonePage extends BasePage {
     public WebElement getAttachFileAddButton() {
         return wait.waitForVisibility(attachFileAddButton);
     }
+
     public WebElement getFilePreview() {
-        return wait.waitForVisibility(filePreviewLocator);
+        return wait.waitForExists(filePreviewLocator);
     }
 
     public WebElement getSubmitAttachButton() {
-        return wait.waitForVisibility(submitAttachButton);
+        return wait.waitForElementClickable(submitAttachButton);
     }
 
     public void clickUploadFileInsideMilestoneButton() {
@@ -105,20 +108,17 @@ public class AddMilestonePage extends BasePage {
     }
 
     public void clickAddMilestoneButton() {
+        wait.waitForVisibility(addMilestoneButton);
         getMilestoneAddButton().click();
     }
 
     public AddMilestonePage fileUploadInsideMilestone() {
-
         clickUploadFileInsideMilestoneButton();
-        clickAttachFileAddButton();
-
         String path = AddMilestonePage.class.getClassLoader().getResource("upload/quality-assurance.jpg")
                 .getPath().substring(1);
-
         getFilePreview().sendKeys(path);
+        wait.waitForElementClickable(selectFile);
         clickSubmitAttachButton();
-
         return this;
     }
 }
