@@ -77,7 +77,7 @@ public class PositiveTests extends BaseTest {
 
     @Description("Тест на отображение диалогового окна")
     @Severity(SeverityLevel.MINOR)
-    @Test(tetestName = "Тест на отображение диалогового окна")
+    @Test(testName = "Тест на отображение диалогового окна")
     public void dialogWindowTest() {
 
         dashboardPage.clickTopMenuSearchButton();
