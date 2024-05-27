@@ -3,7 +3,7 @@ package tests;
 import baseEntities.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.DashboardPage;
+import pages.milestones.MilestonesViewPage;
 
 public class PositiveTests extends BaseTest {
 
@@ -42,23 +42,40 @@ public class PositiveTests extends BaseTest {
 
     @Test
     public void hiddenTextTest() {
-        DashboardPage dashboardPage = new DashboardPage(driver, false);
+
+        dashboardPage.moveToElement(dashboardPage.copyToClipboardButton());
 
         Assert.assertEquals(
-                dashboardPage.moveToElement(), "Copy to Clipboard"
+                dashboardPage.showCopyToClipboardHiddenText(), "Copy to Clipboard"
         );
+
     }
 
-    // Почему-то выкидывает ElementNotInteractableException: element not interactable
-    // Тест падает на 135 строчке кода (AddMilestonePage, метод fileUploadInsideMilestone())
-    // Может я использую неверный локатор для .sendkeys(path)?
+    //Загружается картинка, только после этого открывается проводник и тест падает. Может быть неправильный локатор?
     @Test
     public void fileUploadTest() {
 
+        milestoneSteps.addMilestoneWithFileUploadInside(testProject, testMilestone);
+
+        MilestonesViewPage milestonesViewPage = new MilestonesViewPage(driver, true);
+
         Assert.assertTrue(
-                milestoneSteps
-                        .addMilestoneWithFileUploadInside(testProject, testMilestone)
-                        .isMilestoneInGrid(testMilestone)
+                milestonesViewPage.isPageOpened()
+        );
+
+        Assert.assertTrue(
+                milestonesViewPage.isMilestoneImageDisplayed()
         );
     }
+
+    @Test
+    public void dialogWindowTest() {
+
+        dashboardPage.clickTopMenuSearchButton();
+
+        Assert.assertTrue(
+                dashboardPage.isDialogWindowDisplayed()
+        );
+    }
+    
 }

@@ -1,7 +1,6 @@
 package pages.project;
 
 import baseEntities.BasePage;
-import models.Project;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class AddProjectPage extends BasePage {
-    private final static String pagePath = "/index.php?/admin/projects/add/1";
+    private final static String pagePath = "";
     private final By projectNameInput = By.id("name");
     private final By addProjectButton = By.id("accept");
     private final By announcementTextInput = By.id("announcement_display");
@@ -17,9 +16,11 @@ public class AddProjectPage extends BasePage {
     private final By modeRadioButtonsList = By.name("suite_mode");
     private final By caseApprovalCheckbox = By.id("case_statuses_enabled");
 
-
-    public AddProjectPage(WebDriver driver, boolean isOpenedByUrl) {
-        super(driver, isOpenedByUrl);
+    public AddProjectPage(WebDriver driver) {
+        this(driver, false);
+    }
+    public AddProjectPage(WebDriver driver, boolean openPageByUrl) {
+        super(driver, openPageByUrl);
     }
 
     @Override
@@ -87,16 +88,6 @@ public class AddProjectPage extends BasePage {
 
     public void clickAddProjectButton() {
         getAddProjectButton().click();
-    }
-
-    public void fillProjectInfo(Project project) {
-        this
-                .enterProjectName(project.getName())
-                .enterProjectAnnouncement(project.getAnnouncement())
-                .setShowAnnouncement(project.isAnnouncementShown())
-                .setProjectType(project.getProjectType())
-                .setCasesApproval(project.isApprovalEnabled())
-                .clickAddProjectButton();
     }
 
 }

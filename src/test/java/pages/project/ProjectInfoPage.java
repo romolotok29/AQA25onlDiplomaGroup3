@@ -6,11 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ProjectInfoPage extends BasePage {
+    private final static String pagePath = "";
     private final By projectTitle = By.cssSelector(".content-header-title");
     private final By addMilestoneLink = By.id("sidebar-milestones-add");
 
-    public ProjectInfoPage(WebDriver driver, boolean isOpenedByUrl) {
-        super(driver, isOpenedByUrl);
+    public ProjectInfoPage(WebDriver driver) {
+        this(driver, false);
+    }
+    public ProjectInfoPage(WebDriver driver, boolean openPageByUrl) {
+        super(driver, openPageByUrl);
     }
 
     @Override
@@ -20,7 +24,7 @@ public class ProjectInfoPage extends BasePage {
 
     @Override
     protected String getPagePath() {
-        return "";
+        return pagePath;
     }
 
     public WebElement getAddMilestoneToProject() {

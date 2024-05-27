@@ -16,14 +16,24 @@ public class ProjectSteps extends BaseSteps {
                 .getAddProjectSideButton()
                 .click();
 
-        return new AddProjectPage(driver, true);
+        return new AddProjectPage(driver);
+    }
+
+    public void fillProjectInfo(Project project) {
+        addProjectPage
+                .enterProjectName(project.getName())
+                .enterProjectAnnouncement(project.getAnnouncement())
+                .setShowAnnouncement(project.isAnnouncementShown())
+                .setProjectType(project.getProjectType())
+                .setCasesApproval(project.isApprovalEnabled())
+                .clickAddProjectButton();
     }
 
     public ProjectsOverviewPage addProjectSuccessfully(Project project) {
-        clickAddProjectSideButton()
-                .fillProjectInfo(project);
+        clickAddProjectSideButton();
+        fillProjectInfo(project);
 
-        return new ProjectsOverviewPage(driver, false);
+        return new ProjectsOverviewPage(driver);
     }
 
     public ProjectsOverviewPage deleteProjectSuccessfully(Project project) {
