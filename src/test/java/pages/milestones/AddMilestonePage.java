@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class AddMilestonePage extends BasePage {
+    private final static String pagePath = "";
     private final By milestoneNameInput = By.id("name");
     private final By milestoneReferenceInput = By.id("reference");
     private final By milestoneDescriptionInputLocator = By.id("description_display");
@@ -17,8 +18,11 @@ public class AddMilestonePage extends BasePage {
     private final By filePreviewLocator = By.id("sortDropdown");
     private final By submitAttachButton = By.id("attachmentNewSubmit");
 
-    public AddMilestonePage(WebDriver driver, boolean isOpenedByUrl) {
-        super(driver, isOpenedByUrl);
+    public AddMilestonePage(WebDriver driver) {
+        this(driver, false);
+    }
+    public AddMilestonePage(WebDriver driver, boolean openPageByUrl) {
+        super(driver, openPageByUrl);
     }
 
     @Override
@@ -28,7 +32,7 @@ public class AddMilestonePage extends BasePage {
 
     @Override
     protected String getPagePath() {
-        return null;
+        return pagePath;
     }
 
     public WebElement getMilestoneName() {
@@ -109,7 +113,7 @@ public class AddMilestonePage extends BasePage {
         clickUploadFileInsideMilestoneButton();
         clickAttachFileAddButton();
 
-        String path = AddMilestonePage.class.getClassLoader().getResource("Screenshot 2024-05-17 181529.png")
+        String path = AddMilestonePage.class.getClassLoader().getResource("upload/quality-assurance.jpg")
                 .getPath().substring(1);
 
         getFilePreview().sendKeys(path);

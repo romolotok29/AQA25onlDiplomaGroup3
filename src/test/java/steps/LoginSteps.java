@@ -21,7 +21,7 @@ public class LoginSteps extends BaseSteps {
     public DashboardPage successfulLogin(User user) {
         fillUserInfo(user);
 
-        return new DashboardPage(driver, false);
+        return new DashboardPage(driver);
     }
 
     public void fillUserWithIncorrectInfo(User user, String password) {

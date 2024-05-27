@@ -16,7 +16,7 @@ public class ProjectSteps extends BaseSteps {
                 .getAddProjectSideButton()
                 .click();
 
-        return new AddProjectPage(driver, true);
+        return new AddProjectPage(driver);
     }
 
     public void fillProjectInfo(Project project) {
@@ -33,7 +33,7 @@ public class ProjectSteps extends BaseSteps {
         clickAddProjectSideButton();
         fillProjectInfo(project);
 
-        return new ProjectsOverviewPage(driver, false);
+        return new ProjectsOverviewPage(driver);
     }
 
     public ProjectsOverviewPage deleteProjectSuccessfully(Project project) {

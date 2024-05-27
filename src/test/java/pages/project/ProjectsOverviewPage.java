@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class ProjectsOverviewPage extends BasePage {
-    private final static String pagePath = "index.php?/admin/projects/overview";
+    private final static String pagePath = "";
     private final By projectsGrid = By.className("grid");
     private final By projectsInGrid = By.cssSelector(".hoverSensitive");
     private final By deleteProjectButton = By.cssSelector(".icon-small-delete");
@@ -18,8 +18,12 @@ public class ProjectsOverviewPage extends BasePage {
     private final By deleteOKButton = By.xpath("//a[@data-testid='caseFieldsTabDeleteDialogButtonOk']");
     private final By successfulDeleteMessage = By.cssSelector(".message-success");
 
-    public ProjectsOverviewPage(WebDriver driver, boolean isOpenedByUrl) {
-        super(driver, isOpenedByUrl);
+    public ProjectsOverviewPage(WebDriver driver) {
+        this(driver, false);
+    }
+
+    public ProjectsOverviewPage(WebDriver driver, boolean openPageByUrl) {
+        super(driver, openPageByUrl);
     }
 
     @Override

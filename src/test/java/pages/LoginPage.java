@@ -6,14 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage {
-
+    private final static String pagePath = "";
     private final By emailInputLocator = By.id("name");
     private final By passwordInputLocator = By.id("password");
     private final By loginButtonLocator = By.id("button_primary");
     private final By loginErrorTextLocator = By.xpath("//div[@class='error-text']");
 
-    public LoginPage(WebDriver driver, boolean isOpenedByUrl) {
-        super(driver, isOpenedByUrl);
+    public LoginPage(WebDriver driver) {
+        super(driver);
     }
 
     @Override
@@ -23,7 +23,7 @@ public class LoginPage extends BasePage {
 
     @Override
     protected String getPagePath() {
-        return "";
+        return pagePath;
     }
 
     public WebElement getEmail() {

@@ -58,7 +58,7 @@ public class BaseTest {
         loginSteps.successfulLogin(user);
         projectSteps = new ProjectSteps(driver);
         milestoneSteps = new MilestoneSteps(driver);
-        dashboardPage = new DashboardPage(driver, false);
+        dashboardPage = new DashboardPage(driver);
     }
 
     @AfterMethod

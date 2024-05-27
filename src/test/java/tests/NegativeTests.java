@@ -17,6 +17,11 @@ public class NegativeTests extends BaseTest {
     }
 
     @Test
+    public void dataExceedsTheLimitTest() {
+
+    }
+
+    @Test
     public void allureScreenshotTest() {
         
     }

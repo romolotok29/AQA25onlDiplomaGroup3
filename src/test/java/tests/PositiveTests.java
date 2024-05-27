@@ -3,7 +3,7 @@ package tests;
 import baseEntities.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.DashboardPage;
+import pages.milestones.MilestonesViewPage;
 
 public class PositiveTests extends BaseTest {
 
@@ -43,21 +43,28 @@ public class PositiveTests extends BaseTest {
     @Test
     public void hiddenTextTest() {
 
-        DashboardPage dashboardPage = new DashboardPage(driver, false);
+        dashboardPage.moveToElement(dashboardPage.copyToClipboardButton());
 
         Assert.assertEquals(
-                dashboardPage.moveToElement(), "Copy to Clipboard"
+                dashboardPage.showCopyToClipboardHiddenText(), "Copy to Clipboard"
         );
+
     }
 
-    //Не можем найти нужный локатор
+    //Загружается картинка, только после этого открывается проводник и тест падает. Может быть неправильный локатор?
     @Test
     public void fileUploadTest() {
 
+        milestoneSteps.addMilestoneWithFileUploadInside(testProject, testMilestone);
+
+        MilestonesViewPage milestonesViewPage = new MilestonesViewPage(driver, true);
+
         Assert.assertTrue(
-                milestoneSteps
-                        .addMilestoneWithFileUploadInside(testProject, testMilestone)
-                        .isMilestoneInGrid(testMilestone)
+                milestonesViewPage.isPageOpened()
+        );
+
+        Assert.assertTrue(
+                milestonesViewPage.isMilestoneImageDisplayed()
         );
     }
 
@@ -70,4 +77,5 @@ public class PositiveTests extends BaseTest {
                 dashboardPage.isDialogWindowDisplayed()
         );
     }
+    
 }

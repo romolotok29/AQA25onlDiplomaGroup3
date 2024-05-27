@@ -18,7 +18,7 @@ public class MilestoneSteps extends BaseSteps {
                 .getAddMilestoneToProject()
                 .click();
 
-        return new AddMilestonePage(driver, false);
+        return new AddMilestonePage(driver);
     }
 
     public void fillMilestoneInfo(Milestone milestone) {
@@ -36,7 +36,7 @@ public class MilestoneSteps extends BaseSteps {
         clickAddMilestoneButton();
         fillMilestoneInfo(milestone);
 
-        return new MilestonesOverviewPage(driver, false);
+        return new MilestonesOverviewPage(driver);
     }
 
     public void fillMilestoneInfoWithFileUpload(Milestone milestone) {
@@ -55,6 +55,6 @@ public class MilestoneSteps extends BaseSteps {
         clickAddMilestoneButton();
         fillMilestoneInfoWithFileUpload(milestone);
 
-        return new MilestonesOverviewPage(driver, false);
+        return new MilestonesOverviewPage(driver);
     }
 }
