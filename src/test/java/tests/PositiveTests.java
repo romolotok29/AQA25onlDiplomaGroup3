@@ -9,9 +9,29 @@ import org.testng.annotations.Test;
 import pages.milestones.MilestonesViewPage;
 
 public class PositiveTests extends BaseTest {
-    @Description("Тест на создание сущности Проект с полным заполнением полей")
+    @Description("Тест на проверку граничных значений")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(description = "Тест на проверку поля для ввода на граничные значения")
+    public void boundaryValueTest() {
+
+    }
+
+    @Description("Тест на проверку всплывающего сообщения")
+    @Severity(SeverityLevel.MINOR)
+    @Test(description = "Тест на проверку всплывающего сообщения при наведении курсора на кнопку")
+    public void hiddenTextTest() {
+
+        dashboardPage.moveToElement(dashboardPage.copyToClipboardButton());
+
+        Assert.assertEquals(
+                dashboardPage.showCopyToClipboardHiddenText(), "Copy to Clipboard"
+        );
+
+    }
+
+    @Description("Тест на создание сущности Project")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(testName = "Тест на создание сущности Проект")
+    @Test(testName = "Тест на создание сущности Project с полным заполнением полей")
     public void addFullProjectTest() {
 
         Assert.assertTrue(
@@ -23,7 +43,7 @@ public class PositiveTests extends BaseTest {
 
     @Description("Тест на создание сущности Milestone")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(testName = "Тест на создание сущности Milestone", dependsOnMethods = "addFullProjectTest")
+    @Test(testName = "Создание сущности Milestone с полным заполнением полей")
     public void addMilestoneTest() {
 
         Assert.assertTrue(
@@ -33,9 +53,9 @@ public class PositiveTests extends BaseTest {
         );
     }
 
-    @Description("Тест на удаление сущности Проект")
+    @Description("Тест на удаление сущности Project")
     @Severity(SeverityLevel.BLOCKER)
-    @Test(testName = "Тест на удаление сущности Проект")
+    @Test(description = "Тест на проверку удаления сущности Project")
     public void deleteProjectTest() {
 
         projectSteps
@@ -48,42 +68,31 @@ public class PositiveTests extends BaseTest {
         );
     }
 
-    @Description("Тест на проверку всплывающего сообщения")
+    @Description("Тест на отображение диалогового окна")
     @Severity(SeverityLevel.MINOR)
-    @Test(testName = "Тест на проверку всплывающего сообщения")
-    public void hiddenTextTest() {
+    @Test(description = "Тест на проверку отображения диалогового окна")
+    public void dialogWindowTest() {
 
-        dashboardPage.moveToElement(dashboardPage.copyToClipboardButton());
+        dashboardPage.clickTopMenuSearchButton();
 
-        Assert.assertEquals(
-                dashboardPage.showCopyToClipboardHiddenText(), "Copy to Clipboard"
+        Assert.assertTrue(
+                dashboardPage.isDialogWindowDisplayed()
         );
-
     }
 
     //Тест на загрузку файла проходит первый раз без проблем, файл загружается.
     // А при последующих запусках, если не удалять загруженный ранее файл, то тест падает
     @Description("Тест на загрузку файла")
     @Severity(SeverityLevel.BLOCKER)
-    @Test(testName = "Тест на загрузку файла", dependsOnMethods = "addFullProjectTest")
-    public void fileUploadTest() throws InterruptedException {
+    @Test(description = "Тест на загрузку файла в сущность Milestone")
+    public void fileUploadTest() {
 
         milestoneSteps.addMilestoneWithFileUploadInside(testProject, testMilestone);
+
         MilestonesViewPage milestonesViewPage = new MilestonesViewPage(driver, true);
         //на Ассертах тест падает
         //Assert.assertTrue(milestonesViewPage.isPageOpened());
         //Assert.assertTrue(milestonesViewPage.isMilestoneImageDisplayed());
-    }
-
-    @Description("Тест на отображение диалогового окна")
-    @Severity(SeverityLevel.MINOR)
-    @Test(testName = "Тест на отображение диалогового окна")
-    public void dialogWindowTest() {
-
-        dashboardPage.clickTopMenuSearchButton();
-        Assert.assertTrue(
-                dashboardPage.isDialogWindowDisplayed()
-        );
     }
 
 }

@@ -19,11 +19,7 @@ public class ProjectsOverviewPage extends BasePage {
     private final By successfulDeleteMessage = By.cssSelector(".message-success");
 
     public ProjectsOverviewPage(WebDriver driver) {
-        this(driver, false);
-    }
-
-    public ProjectsOverviewPage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+        super(driver);
     }
 
     @Override

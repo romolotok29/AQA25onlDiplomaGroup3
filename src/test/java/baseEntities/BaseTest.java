@@ -75,7 +75,4 @@ public class BaseTest {
         iTestContext.setAttribute("WebDriver", driver);
     }
 
-    public static WebDriver getDriverFromContext(ITestContext iTestContext){
-        return (WebDriver) iTestContext.getAttribute("WebDriver") ;
-    }
 }
