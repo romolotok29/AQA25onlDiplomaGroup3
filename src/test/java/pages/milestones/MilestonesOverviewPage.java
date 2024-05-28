@@ -13,11 +13,7 @@ public class MilestonesOverviewPage extends BasePage {
     private final By milestonesList = By.className("summary-title");
 
     public MilestonesOverviewPage(WebDriver driver) {
-        this(driver, false);
-    }
-
-    public MilestonesOverviewPage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+        super(driver);
     }
 
     @Override
@@ -33,6 +29,7 @@ public class MilestonesOverviewPage extends BasePage {
     public List<WebElement> getMilestonesList() {
         return wait.waitForAllVisibleElementsLocatedBy(milestonesList);
     }
+
 
     public boolean isMilestoneInGrid(Milestone milestone) {
         for (WebElement element :

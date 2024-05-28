@@ -17,10 +17,7 @@ public class AddProjectPage extends BasePage {
     private final By caseApprovalCheckbox = By.id("case_statuses_enabled");
 
     public AddProjectPage(WebDriver driver) {
-        this(driver, false);
-    }
-    public AddProjectPage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+        super(driver);
     }
 
     @Override

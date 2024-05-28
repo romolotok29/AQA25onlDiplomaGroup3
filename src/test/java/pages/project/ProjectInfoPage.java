@@ -11,10 +11,7 @@ public class ProjectInfoPage extends BasePage {
     private final By addMilestoneLink = By.id("sidebar-milestones-add");
 
     public ProjectInfoPage(WebDriver driver) {
-        this(driver, false);
-    }
-    public ProjectInfoPage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+        super(driver);
     }
 
     @Override

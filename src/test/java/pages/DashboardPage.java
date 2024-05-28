@@ -21,10 +21,7 @@ public class DashboardPage extends BasePage {
     private final By copyToClipboardHiddenText = By.xpath("//p[contains(text(), 'Copy to Clipboard')]");
 
     public DashboardPage(WebDriver driver) {
-        this(driver, false);
-    }
-    public DashboardPage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+        super(driver);
     }
 
     @Override
@@ -94,7 +91,7 @@ public class DashboardPage extends BasePage {
             if (element.getText().trim().equals(project.getName())) {
                 element.click();
 
-                return new ProjectInfoPage(driver, false);
+                return new ProjectInfoPage(driver);
             }
         }
         return null;
