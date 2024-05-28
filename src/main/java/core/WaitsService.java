@@ -35,4 +35,12 @@ public class WaitsService {
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
+    public WebElement waitForElementClickable(By by) {
+        return wait.until(ExpectedConditions.elementToBeClickable(by));
+    }
+
+    public WebElement waitForExists(By by) {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+
 }
