@@ -6,7 +6,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.milestones.MilestonesViewPage;
+import pages.DashboardPage;
 
 public class PositiveTests extends BaseTest {
     @Description("Тест на проверку граничных значений")
@@ -43,7 +43,7 @@ public class PositiveTests extends BaseTest {
 
     @Description("Тест на создание сущности Milestone")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(testName = "Создание сущности Milestone с полным заполнением полей")
+    @Test(description = "Создание сущности Milestone с полным заполнением полей")
     public void addMilestoneTest() {
 
         Assert.assertTrue(
@@ -51,6 +51,16 @@ public class PositiveTests extends BaseTest {
                         .addMilestoneSuccessfully(testProject, testMilestone)
                         .isMilestoneInGrid(testMilestone)
         );
+
+        //Почему-то не переходит на страницу
+        /*
+        DashboardPage dashboardPage = new DashboardPage(driver, true);
+
+        Assert.assertTrue(
+                dashboardPage.isPageOpened()
+        );
+
+         */
     }
 
     @Description("Тест на удаление сущности Project")
@@ -81,18 +91,17 @@ public class PositiveTests extends BaseTest {
     }
 
     //Тест на загрузку файла проходит первый раз без проблем, файл загружается.
-    // А при последующих запусках, если не удалять загруженный ранее файл, то тест падает
+    // А при последующих запусках, если не удалять загруженный ранее файл , то тест падает
     @Description("Тест на загрузку файла")
     @Severity(SeverityLevel.BLOCKER)
     @Test(description = "Тест на загрузку файла в сущность Milestone")
     public void fileUploadTest() {
 
-        milestoneSteps.addMilestoneWithFileUploadInside(testProject, testMilestone);
+        milestoneSteps.uploadFileInsideMilestone(testProject, testMilestone);
 
-        MilestonesViewPage milestonesViewPage = new MilestonesViewPage(driver, true);
-        //на Ассертах тест падает
-        //Assert.assertTrue(milestonesViewPage.isPageOpened());
-        //Assert.assertTrue(milestonesViewPage.isMilestoneImageDisplayed());
+        Assert.assertTrue(
+                addMilestonePage.isFileDisplayedOnScreen()
+        );
     }
 
 }

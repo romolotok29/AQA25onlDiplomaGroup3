@@ -45,16 +45,15 @@ public class MilestoneSteps extends BaseSteps {
                 .enterMilestoneReference(milestone)
                 .enterMilestoneDescription(milestone)
                 .selectMilestoneCompetence(milestone)
-                .fileUploadInsideMilestone()
-                .clickAddMilestoneButton();
+                .fileUploadInsideMilestone();
     }
 
-    public MilestonesOverviewPage addMilestoneWithFileUploadInside(Project project, Milestone milestone) {
+    public AddMilestonePage uploadFileInsideMilestone(Project project, Milestone milestone) {
         dashboardPage.clickOnProjectInGrid(project);
 
         clickAddMilestoneButton();
         fillMilestoneInfoWithFileUpload(milestone);
 
-        return new MilestonesOverviewPage(driver);
+        return addMilestonePage;
     }
 }
