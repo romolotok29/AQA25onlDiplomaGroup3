@@ -32,8 +32,8 @@ public abstract class BasePage {
         return wait.waitForVisibility(getPageIdentifier()).isDisplayed();
     }
 
-    public String openPageByUrl(){
-        return ReadProperties.getUrl() + getPagePath();
+    public void openPageByUrl() {
+        driver.get(ReadProperties.getUrl() + getPagePath());
     }
 
     public String moveToElement(WebElement element) {

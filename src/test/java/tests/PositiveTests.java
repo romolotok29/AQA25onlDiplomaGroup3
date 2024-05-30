@@ -1,19 +1,32 @@
 package tests;
 
 import baseEntities.BaseTest;
+import data.StaticProvider;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
+import pages.DetailedSearchPage;
 
 public class PositiveTests extends BaseTest {
     @Description("Тест на проверку граничных значений")
     @Severity(SeverityLevel.NORMAL)
-    @Test(description = "Тест на проверку поля для ввода на граничные значения")
-    public void boundaryValueTest() {
+    @Test(description = "Тест на проверку поля для ввода на граничные значения",
+            dataProvider = "boundaryValues", dataProviderClass = StaticProvider.class)
+    public void boundaryValuesTest(String inputValue, boolean isValid) {
 
+        detailedSearchPage = new DetailedSearchPage(driver, true);
+
+        detailedSearchPage.boundaryValue(inputValue);
+
+        if (isValid) {
+
+            Assert.assertTrue(
+                    detailedSearchPage.isSearchItemsBoxShown()
+            );
+        }
     }
 
     @Description("Тест на проверку всплывающего сообщения")
@@ -52,15 +65,12 @@ public class PositiveTests extends BaseTest {
                         .isMilestoneInGrid(testMilestone)
         );
 
-        //Почему-то не переходит на страницу
-        /*
         DashboardPage dashboardPage = new DashboardPage(driver, true);
 
         Assert.assertTrue(
                 dashboardPage.isPageOpened()
         );
 
-         */
     }
 
     @Description("Тест на удаление сущности Project")

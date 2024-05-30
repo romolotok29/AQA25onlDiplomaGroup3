@@ -19,16 +19,9 @@ public class DashboardPage extends BasePage {
     private final By copyToClipboardButton = By.xpath("//div[@tooltip-text='Copy to Clipboard']");
     private final By copyToClipboardHiddenText = By.xpath("//p[contains(text(), 'Copy to Clipboard')]");
 
-    public DashboardPage(WebDriver driver) {
-        super(driver);
-    }
-
-    /*
     public DashboardPage(WebDriver driver, boolean openPageByUrl) {
         super(driver, openPageByUrl);
     }
-
-     */
 
     @Override
     protected By getPageIdentifier() {
