@@ -19,7 +19,7 @@ public class PositiveTests extends BaseTest {
 
         detailedSearchPage = new DetailedSearchPage(driver, true);
 
-        detailedSearchPage.boundaryValue(inputValue);
+        detailedSearchPage.boundaryValues(inputValue);
 
         if (isValid) {
 

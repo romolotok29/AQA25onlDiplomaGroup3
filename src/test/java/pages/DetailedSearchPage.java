@@ -12,6 +12,8 @@ public class DetailedSearchPage extends BasePage {
     private final By searchButtonLocator = By.cssSelector("#searchQueryDetailed");
     private final By searchItemsBoxLocator = By.cssSelector(".search-item");
     private final By clearAllButtonLocator = By.cssSelector(".search-item-clear-all");
+    private final By errorTitleLocator = By.xpath("//span[contains(text(), 'Error')]");
+    private final By errorDialogMessage = By.xpath("//p[@data-testid='deleteAttachmentDialogMessage']");
 
     public DetailedSearchPage(WebDriver driver, boolean openPageByUrl) {
         super(driver, openPageByUrl);
@@ -43,9 +45,26 @@ public class DetailedSearchPage extends BasePage {
         getSearchButton().click();
     }
 
+    public WebElement getErrorTitle() {
+        return wait.waitForVisibility(errorTitleLocator);
+    }
+
+    public String getErrorText() {
+        return getErrorTitle().getText();
+    }
+
+    public WebElement getErrorDialogMessage() {
+        return wait.waitForVisibility(errorDialogMessage);
+    }
+
+    public String showErrorDialogMessage() {
+        return getErrorDialogMessage().getText();
+    }
+
     public WebElement getSearchItemsBox() {
         return wait.waitForVisibility(searchItemsBoxLocator);
     }
+
 
     public boolean isSearchItemsBoxShown() {
         if (getSearchItemsBox().isDisplayed()) {
@@ -55,7 +74,7 @@ public class DetailedSearchPage extends BasePage {
         }
     }
 
-    public void boundaryValue(String inputValue) {
+    public void boundaryValues(String inputValue) {
         clickOnClearAllButton();
         clickOnSearchButton();
         getSearchButton().sendKeys(inputValue);

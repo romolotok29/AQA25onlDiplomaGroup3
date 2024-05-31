@@ -3,7 +3,6 @@ package data;
 import org.testng.annotations.DataProvider;
 
 public class StaticProvider {
-
     @DataProvider(name = "boundaryValues")
     public static Object[][] boundaryValues() {
         return new Object[][] {
@@ -11,6 +10,16 @@ public class StaticProvider {
                 {"a", true},
                 {new String(new char[249]).replace('\0', '1'), true},
                 {new String(new char[250]).replace('\0', '1'), true}
+        };
+    }
+
+    @DataProvider(name = "dataExceedsTheLimit")
+    public static Object[][] dataExceedsTheLimit() {
+        return new Object[][] {
+                {"!!!", false},
+                {"$$$", false},
+                {BoundaryValues.MAX_PLUS_ONE, false},
+
         };
     }
 
