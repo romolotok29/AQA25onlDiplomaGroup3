@@ -1,7 +1,6 @@
 package tests;
 
 import baseEntities.BaseTest;
-import data.BoundaryValues;
 import data.StaticProvider;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -10,8 +9,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DetailedSearchPage;
 
-public class NegativeTests extends BaseTest {
+import static data.StaticProvider.MAX_PLUS_ONE;
 
+public class NegativeTests extends BaseTest {
     @Description("Тест на использование некорректных данных на странице Login")
     @Severity(SeverityLevel.CRITICAL)
     @Test(description = "Тест на использование некорректных данных")
@@ -24,9 +24,9 @@ public class NegativeTests extends BaseTest {
         );
     }
 
-    @Description("Тест на ввод данных превышающих допустимые")
+    @Description("Тест на ввод данных превышающих допустимое значение поля")
     @Severity(SeverityLevel.NORMAL)
-    @Test(description = "Тест на ввод данных превышающих допустимое значение поля",
+    @Test(description = "Тест на ввод данных превышающих допустимые",
             dataProvider = "dataExceedsTheLimit", dataProviderClass = StaticProvider.class)
     public void dataExceedsTheLimitTest(String inputValue, boolean isValid) {
 
@@ -47,17 +47,52 @@ public class NegativeTests extends BaseTest {
                                 .showErrorDialogMessage(), "line 1:267 mismatched character '*' expecting '$'"
                 );
 
-                case BoundaryValues.MAX_PLUS_ONE -> Assert.assertEquals(
+                /*
+                case MAX_PLUS_ONE -> Assert.assertEquals(
                         detailedSearchPage
                                 .showErrorDialogMessage(), "Field Query is too long (250 characters at most)."
                 );
+
+                 */
             }
         }
     }
 
-    @Description("Тест воспроизводящий любой дефект")
+    @Description("Тест на ввод данных превышающих допустимое значение поля")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(description = "Тест на ввод данных превышающих допустимые",
+            dataProvider = "dataExceedsTheLimit", dataProviderClass = StaticProvider.class)
+    public void dataExceedsTheLimitTest1(String inputValue, boolean isValid) {
+
+        detailedSearchPage = new DetailedSearchPage(driver, true);
+
+        detailedSearchPage.boundaryValues(inputValue);
+
+        if (inputValue.equals("!!!") && !isValid) {
+
+            Assert.assertEquals(
+                    detailedSearchPage.getErrorText(), "Error"
+            );
+
+        } else if (inputValue.equals("$$$") && !isValid) {
+
+            Assert.assertEquals(
+                    detailedSearchPage
+                            .showErrorDialogMessage(), "line 1:267 mismatched character '*' expecting '$'"
+            );
+
+        } else if (inputValue.equals(MAX_PLUS_ONE) && !isValid) {
+
+            Assert.assertEquals(
+                    detailedSearchPage
+                            .showErrorDialogMessage(), "Field Query is too long (250 characters at most)."
+            );
+        }
+    }
+
+    @Description("Специально падающий тест для формирования скриншота в allure report")
     @Severity(SeverityLevel.MINOR)
-    @Test(description = "Специально падающий тест для формирования скриншота в allure report")
+    @Test(description = "Тест воспроизводящий любой дефект")
     public void allureScreenshotTest() {
 
         dashboardPage.moveToElement(dashboardPage.copyToClipboardButton());
