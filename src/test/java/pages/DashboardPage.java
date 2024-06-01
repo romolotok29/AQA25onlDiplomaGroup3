@@ -6,11 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pages.project.ProjectInfoPage;
-
 import java.util.List;
 
 public class DashboardPage extends BasePage {
-    private final static String pagePath = "";
+    private final static String pagePath = "/index.php?/dashboard";
     private final By addProjectSideButton = By.id("sidebar-projects-add");
     private final By topMenuUserButton = By.cssSelector(".navigation-username");
     private final By topMenuUserLogoutButton = By.id("navigation-user-logout");
@@ -20,8 +19,8 @@ public class DashboardPage extends BasePage {
     private final By copyToClipboardButton = By.xpath("//div[@tooltip-text='Copy to Clipboard']");
     private final By copyToClipboardHiddenText = By.xpath("//p[contains(text(), 'Copy to Clipboard')]");
 
-    public DashboardPage(WebDriver driver) {
-        super(driver);
+    public DashboardPage(WebDriver driver, boolean openPageByUrl) {
+        super(driver, openPageByUrl);
     }
 
     @Override

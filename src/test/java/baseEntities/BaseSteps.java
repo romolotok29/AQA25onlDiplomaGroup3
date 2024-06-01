@@ -24,7 +24,7 @@ public class BaseSteps {
         this.driver = driver;
 
         this.loginPage = new LoginPage(driver);
-        this.dashboardPage = new DashboardPage(driver);
+        this.dashboardPage = new DashboardPage(driver, false);
         this.addProjectPage = new AddProjectPage(driver);
         this.projectInfoPage = new ProjectInfoPage(driver);
         this.projectsOverviewPage = new ProjectsOverviewPage(driver);

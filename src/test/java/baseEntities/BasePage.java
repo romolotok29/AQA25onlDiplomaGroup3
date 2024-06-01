@@ -28,12 +28,12 @@ public abstract class BasePage {
     protected abstract By getPageIdentifier();
     protected abstract String getPagePath();
 
-    public Boolean isPageOpened() {
+    public boolean isPageOpened() {
         return wait.waitForVisibility(getPageIdentifier()).isDisplayed();
     }
 
-    public String openPageByUrl(){
-        return ReadProperties.getUrl() + getPagePath();
+    public void openPageByUrl() {
+        driver.get(ReadProperties.getUrl() + getPagePath());
     }
 
     public String moveToElement(WebElement element) {

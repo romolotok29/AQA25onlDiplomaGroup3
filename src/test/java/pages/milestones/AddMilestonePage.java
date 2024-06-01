@@ -17,6 +17,7 @@ public class AddMilestonePage extends BasePage {
     private final By submitAttachButton = By.id("attachmentNewSubmit");
     private final By filePreviewLocator = By.xpath("/html/body/input[3]");
     private final By selectFile = By.xpath("//div[@class='frolaAttachmentpop']/following-sibling::div/..//div[contains(@data-testid,'attachmentsTabAttachmentSelection')]");
+    private final By fileLocationOnScreen = By.xpath("//div[@data-testid='attachmentListItem']");
 
     public AddMilestonePage(WebDriver driver) {
         super(driver);
@@ -92,6 +93,18 @@ public class AddMilestonePage extends BasePage {
 
     public void clickUploadFileInsideMilestoneButton() {
         getUploadFileInsideMilestone().click();
+    }
+
+    public WebElement getFileLocationOnScreen() {
+        return wait.waitForExists(fileLocationOnScreen);
+    }
+
+    public boolean isFileDisplayedOnScreen() {
+        if (getFileLocationOnScreen().isDisplayed()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void clickAddMilestoneButton() {

@@ -12,9 +12,9 @@
     </test>
     <test name="Regression">
         <classes>
-            <class name="tests.PositiveTests">
+            <class name="tests.NegativeTests">
                 <methods>
-                    <exclude name="addFullProjectTest"/>
+                    <exclude name="incorrectLoginTest"/>
                 </methods>
             </class>
         </classes>

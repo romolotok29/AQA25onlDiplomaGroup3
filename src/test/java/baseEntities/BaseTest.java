@@ -12,6 +12,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import pages.DashboardPage;
+import pages.DetailedSearchPage;
+import pages.milestones.AddMilestonePage;
 import steps.LoginSteps;
 import steps.MilestoneSteps;
 import steps.ProjectSteps;
@@ -28,6 +30,8 @@ public class BaseTest {
     protected ProjectSteps projectSteps;
     protected MilestoneSteps milestoneSteps;
     protected DashboardPage dashboardPage;
+    protected AddMilestonePage addMilestonePage;
+    protected DetailedSearchPage detailedSearchPage;
 
     @BeforeTest
     public void setUpData() {
@@ -63,7 +67,10 @@ public class BaseTest {
         loginSteps.successfulLogin(user);
         projectSteps = new ProjectSteps(driver);
         milestoneSteps = new MilestoneSteps(driver);
-        dashboardPage = new DashboardPage(driver);
+        dashboardPage = new DashboardPage(driver, false);
+        addMilestonePage = new AddMilestonePage(driver);
+        detailedSearchPage = new DetailedSearchPage(driver, false);
+
     }
 
     @AfterMethod
