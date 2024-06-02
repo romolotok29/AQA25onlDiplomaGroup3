@@ -1,4 +1,4 @@
-package tests;
+package tests.gui;
 
 import baseEntities.BaseTest;
 import data.StaticProvider;
@@ -56,7 +56,7 @@ public class PositiveTests extends BaseTest {
 
     @Description("Создание сущности Milestone с полным заполнением полей")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(description = "Тест на создание сущности Milestone")
+    @Test(dependsOnMethods = "addFullProjectTest", description = "Тест на создание сущности Milestone")
     public void addMilestoneTest() {
 
         Assert.assertTrue(
@@ -104,7 +104,7 @@ public class PositiveTests extends BaseTest {
     // А при последующих запусках, если не удалять загруженный ранее файл , то тест падает
     @Description("Тест на загрузку файла в сущность Milestone")
     @Severity(SeverityLevel.BLOCKER)
-    @Test(description = "Тест на загрузку файла")
+    @Test(dependsOnMethods = {"addFullProjectTest", "addMilestoneTest"}, description = "Тест на загрузку файла")
     public void fileUploadTest() {
 
         milestoneSteps.uploadFileInsideMilestone(testProject, testMilestone);
