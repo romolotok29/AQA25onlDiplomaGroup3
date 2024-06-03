@@ -48,12 +48,21 @@ public class NegativeTests extends BaseTest {
                 );
 
                 /*
-                case MAX_PLUS_ONE -> Assert.assertEquals(
+                case MAX_PLUS_ONE : Assert.assertEquals(
                         detailedSearchPage
                                 .showErrorDialogMessage(), "Field Query is too long (250 characters at most)."
                 );
 
                  */
+
+                default -> {
+                    if (MAX_PLUS_ONE.equals(inputValue)) {
+                        Assert.assertEquals(
+                                detailedSearchPage
+                                        .showErrorDialogMessage(), "Field Query is too long (250 characters at most)."
+                        );
+                    }
+                }
             }
         }
     }

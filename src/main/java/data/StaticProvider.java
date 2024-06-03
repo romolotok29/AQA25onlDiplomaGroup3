@@ -3,7 +3,7 @@ package data;
 import org.testng.annotations.DataProvider;
 
 public class StaticProvider {
-    public static String MAX_PLUS_ONE = new String(new char[251]).replace('\0', '1');
+    public static final String MAX_PLUS_ONE = new String(new char[251]).replace('\0', '1');
 
     @DataProvider(name = "boundaryValues")
     public static Object[][] boundaryValues() {

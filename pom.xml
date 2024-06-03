@@ -47,7 +47,6 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>5.4.0</version>
-            <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
@@ -81,7 +80,7 @@
                     </argLine>
                     <suiteXmlFiles>
                         <!--suppress UnresolvedMavenProperty -->
-                        <suiteXmlFile>target/test-classes/${suiteFileName}</suiteXmlFile>
+                        <!--suiteXmlFile>target/test-classes/${suiteFileName}</suiteXmlFile-->
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
