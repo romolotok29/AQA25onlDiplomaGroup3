@@ -78,8 +78,7 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <suiteXmlFiles>
-                        <!--suppress UnresolvedMavenProperty -->
-                        <!--suiteXmlFile>target/test-classes/${suiteFileName}</suiteXmlFile-->
+                        <suiteXmlFile>target/test-classes/TestNG.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>

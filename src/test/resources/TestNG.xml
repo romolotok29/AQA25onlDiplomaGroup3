@@ -3,18 +3,28 @@
 <suite name="Diploma Suite">
     <test name="Smoke">
         <classes>
-            <class name="tests.PositiveTests">
+            <class name="tests.gui.PositiveTests">
                 <methods>
                     <include name="addFullProjectTest"/>
+                </methods>
+            </class>
+            <class name="tests.api.ApiPostTest">
+                <methods>
+                    <include name="addProjectUsingJsonFileTest"/>
                 </methods>
             </class>
         </classes>
     </test>
     <test name="Regression">
         <classes>
-            <class name="tests.NegativeTests">
+            <class name="tests.gui.NegativeTests">
                 <methods>
-                    <exclude name="incorrectLoginTest"/>
+                    <include name="incorrectLoginTest"/>
+                </methods>
+            </class>
+            <class name="tests.api.ApiGetTest">
+                <methods>
+                    <include name="getAllProjectsTest"/>
                 </methods>
             </class>
         </classes>
