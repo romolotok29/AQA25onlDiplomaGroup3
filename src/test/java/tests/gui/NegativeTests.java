@@ -34,49 +34,6 @@ public class NegativeTests extends BaseTest {
 
         detailedSearchPage.boundaryValues(inputValue);
 
-        if (!isValid) {
-
-            switch (inputValue) {
-                case "!!!" ->
-                    Assert.assertEquals(
-                            detailedSearchPage.getErrorText(), "Error"
-                    );
-
-                case "$$$" -> Assert.assertEquals(
-                        detailedSearchPage
-                                .showErrorDialogMessage(), "line 1:267 mismatched character '*' expecting '$'"
-                );
-
-                /*
-                case MAX_PLUS_ONE : Assert.assertEquals(
-                        detailedSearchPage
-                                .showErrorDialogMessage(), "Field Query is too long (250 characters at most)."
-                );
-
-                 */
-
-                default -> {
-                    if (MAX_PLUS_ONE.equals(inputValue)) {
-                        Assert.assertEquals(
-                                detailedSearchPage
-                                        .showErrorDialogMessage(), "Field Query is too long (250 characters at most)."
-                        );
-                    }
-                }
-            }
-        }
-    }
-
-    @Description("Тест на ввод данных превышающих допустимое значение поля")
-    @Severity(SeverityLevel.NORMAL)
-    @Test(description = "Тест на ввод данных превышающих допустимые",
-            dataProvider = "dataExceedsTheLimit", dataProviderClass = StaticProvider.class)
-    public void dataExceedsTheLimitTest1(String inputValue, boolean isValid) {
-
-        detailedSearchPage = new DetailedSearchPage(driver, true);
-
-        detailedSearchPage.boundaryValues(inputValue);
-
         if (inputValue.equals("!!!") && !isValid) {
 
             Assert.assertEquals(
