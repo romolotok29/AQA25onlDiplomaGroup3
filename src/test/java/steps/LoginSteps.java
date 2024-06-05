@@ -21,6 +21,7 @@ public class LoginSteps extends BaseSteps {
     public DashboardPage successfulLogin(User user) {
         fillUserInfo(user);
 
+        logger.info("Successful login!");
         return dashboardPage;
     }
 
@@ -37,6 +38,8 @@ public class LoginSteps extends BaseSteps {
 
         fillUserWithIncorrectInfo(user, password);
 
+
+        logger.error("Error: Incorrect login.");
         return loginPage;
     }
 

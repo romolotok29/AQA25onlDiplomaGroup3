@@ -18,6 +18,7 @@ public class MilestoneSteps extends BaseSteps {
                 .getAddMilestoneToProject()
                 .click();
 
+        logger.info("Adding a milestone...");
         return new AddMilestonePage(driver);
     }
 
@@ -36,6 +37,7 @@ public class MilestoneSteps extends BaseSteps {
         clickAddMilestoneButton();
         fillMilestoneInfo(milestone);
 
+        logger.info("Milestone added successfully!");
         return new MilestonesOverviewPage(driver);
     }
 
@@ -54,6 +56,7 @@ public class MilestoneSteps extends BaseSteps {
         clickAddMilestoneButton();
         fillMilestoneInfoWithFileUpload(milestone);
 
+        logger.info("File uploaded successfully!");
         return addMilestonePage;
     }
 }

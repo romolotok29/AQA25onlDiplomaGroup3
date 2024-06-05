@@ -33,6 +33,7 @@ public class ProjectSteps extends BaseSteps {
         clickAddProjectSideButton();
         fillProjectInfo(project);
 
+        logger.info("Project added successfully!");
         return new ProjectsOverviewPage(driver);
     }
 
@@ -41,6 +42,7 @@ public class ProjectSteps extends BaseSteps {
         projectsOverviewPage.clickDeleteConfirmationButton();
         projectsOverviewPage.clickDeleteOKButton();
 
+        logger.info("Project deleted successfully!");
         return projectsOverviewPage;
     }
 }
