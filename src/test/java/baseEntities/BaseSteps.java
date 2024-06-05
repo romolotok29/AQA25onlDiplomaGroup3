@@ -1,5 +1,7 @@
 package baseEntities;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import pages.DashboardPage;
 import pages.LoginPage;
@@ -12,6 +14,7 @@ import pages.project.ProjectsOverviewPage;
 public class BaseSteps {
 
     protected WebDriver driver;
+    protected Logger logger;
     protected LoginPage loginPage;
     protected DashboardPage dashboardPage;
     protected AddProjectPage addProjectPage;
@@ -22,6 +25,7 @@ public class BaseSteps {
 
     public BaseSteps(WebDriver driver) {
         this.driver = driver;
+        this.logger = LogManager.getLogger(BaseSteps.class);
 
         this.loginPage = new LoginPage(driver);
         this.dashboardPage = new DashboardPage(driver, false);
@@ -31,5 +35,4 @@ public class BaseSteps {
         this.addMilestonePage = new AddMilestonePage(driver);
         this.milestonesOverviewPage = new MilestonesOverviewPage(driver);
     }
-
 }

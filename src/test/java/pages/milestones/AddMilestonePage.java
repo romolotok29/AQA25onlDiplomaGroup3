@@ -2,11 +2,15 @@ package pages.milestones;
 
 import baseEntities.BasePage;
 import models.Milestone;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class AddMilestonePage extends BasePage {
+
+    private Logger logger = LogManager.getLogger(AddMilestonePage.class);
     private final static String pagePath = "";
     private final By milestoneNameInput = By.id("name");
     private final By milestoneReferenceInput = By.id("reference");
@@ -124,6 +128,7 @@ public class AddMilestonePage extends BasePage {
 
         clickSubmitAttachButton();
 
+        logger.info("Uploading a file...");
         return this;
     }
 }
