@@ -13,7 +13,7 @@ import pages.DetailedSearchPage;
 public class PositiveTests extends BaseTest {
     @Description("Тест на проверку поля для ввода на граничные значения")
     @Severity(SeverityLevel.NORMAL)
-    @Test(description = "Тест на проверку граничных значений",
+    @Test(testName = "Проверка граничных значений",
             dataProvider = "boundaryValues", dataProviderClass = StaticProvider.class)
     public void boundaryValuesTest(String inputValue, boolean isValid) {
 
@@ -31,7 +31,7 @@ public class PositiveTests extends BaseTest {
 
     @Description("Тест на проверку всплывающего сообщения при наведении курсора на кнопку")
     @Severity(SeverityLevel.MINOR)
-    @Test(description = "Тест на проверку всплывающего сообщения")
+    @Test(testName = "Проверка всплывающего сообщения")
     public void hiddenTextTest() {
 
         dashboardPage.moveToElement(dashboardPage.copyToClipboardButton());
@@ -44,7 +44,7 @@ public class PositiveTests extends BaseTest {
 
     @Description("Тест на создание сущности Project с полным заполнением полей")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(testName = "Тест на создание сущности Project")
+    @Test(testName = "Создание сущности Project")
     public void addFullProjectTest() {
 
         Assert.assertTrue(
@@ -56,7 +56,7 @@ public class PositiveTests extends BaseTest {
 
     @Description("Создание сущности Milestone с полным заполнением полей")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(dependsOnMethods = "addFullProjectTest", description = "Тест на создание сущности Milestone")
+    @Test(testName = "Создание сущности Milestone", dependsOnMethods = "addFullProjectTest")
     public void addMilestoneTest() {
 
         Assert.assertTrue(
@@ -75,7 +75,7 @@ public class PositiveTests extends BaseTest {
 
     @Description("Тест на проверку удаления сущности Project")
     @Severity(SeverityLevel.BLOCKER)
-    @Test(description = "Тест на удаление сущности Project")
+    @Test(testName = "Удаление сущности Project")
     public void deleteProjectTest() {
 
         projectSteps
@@ -90,7 +90,7 @@ public class PositiveTests extends BaseTest {
 
     @Description("Тест на проверку отображения диалогового окна")
     @Severity(SeverityLevel.MINOR)
-    @Test(description = "Тест на отображение диалогового окна")
+    @Test(testName = "Отображение диалогового окна")
     public void dialogWindowTest() {
 
         dashboardPage.clickTopMenuSearchButton();
@@ -100,11 +100,9 @@ public class PositiveTests extends BaseTest {
         );
     }
 
-    //Тест на загрузку файла проходит первый раз без проблем, файл загружается.
-    // А при последующих запусках, если не удалять загруженный ранее файл , то тест падает
     @Description("Тест на загрузку файла в сущность Milestone")
     @Severity(SeverityLevel.BLOCKER)
-    @Test(dependsOnMethods = {"addFullProjectTest", "addMilestoneTest"}, description = "Тест на загрузку файла")
+    @Test(testName = "Загрузка файла в Milestone", dependsOnMethods = {"addFullProjectTest", "addMilestoneTest"})
     public void fileUploadTest() {
 
         milestoneSteps.uploadFileInsideMilestone(testProject, testMilestone);

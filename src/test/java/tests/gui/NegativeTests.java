@@ -14,7 +14,7 @@ import static data.StaticProvider.MAX_PLUS_ONE;
 public class NegativeTests extends BaseTest {
     @Description("Тест на использование некорректных данных на странице Login")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(description = "Тест на использование некорректных данных")
+    @Test(testName = "Использование некорректных данных")
     public void incorrectLoginTest() {
 
         Assert.assertEquals(
@@ -26,7 +26,7 @@ public class NegativeTests extends BaseTest {
 
     @Description("Тест на ввод данных превышающих допустимое значение поля")
     @Severity(SeverityLevel.NORMAL)
-    @Test(description = "Тест на ввод данных превышающих допустимые",
+    @Test(testName = "Ввод данных превышающих допустимые",
             dataProvider = "dataExceedsTheLimit", dataProviderClass = StaticProvider.class)
     public void dataExceedsTheLimitTest(String inputValue, boolean isValid) {
 
@@ -58,7 +58,7 @@ public class NegativeTests extends BaseTest {
 
     @Description("Специально падающий тест для формирования скриншота в allure report")
     @Severity(SeverityLevel.MINOR)
-    @Test(description = "Тест воспроизводящий любой дефект")
+    @Test(testName = "Воспроизведение любого дефекта")
     public void allureScreenshotTest() {
 
         dashboardPage.moveToElement(dashboardPage.copyToClipboardButton());

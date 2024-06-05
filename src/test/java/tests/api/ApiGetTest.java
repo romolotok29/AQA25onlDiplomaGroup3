@@ -19,7 +19,7 @@ public class ApiGetTest extends BaseApiTest {
 
     @Description("API GET Тест на проверку имеющихся проектов")
     @Severity(SeverityLevel.NORMAL)
-    @Test(description = "API GET Тест на проверку имеющихся проектов")
+    @Test(testName = "API GET проверка имеющихся проектов")
     public void getAllProjectsTest() {
         String endpoint = "index.php?/api/v2/get_projects";
 
@@ -33,7 +33,7 @@ public class ApiGetTest extends BaseApiTest {
 
     @Description("API GET Тест на соответствие сущности User")
     @Severity(SeverityLevel.NORMAL)
-    @Test(description = "API GET Тест на соответствие сущности User")
+    @Test(testName = "API GET соответствие сущности User")
     public void getTestUserSimple() {
         int userID = 1;
 
@@ -60,7 +60,7 @@ public class ApiGetTest extends BaseApiTest {
 
     @Description("API GET Тест_2 на соответствие сущности User")
     @Severity(SeverityLevel.NORMAL)
-    @Test(description = "API GET Тест_2 на соответствие сущности User")
+    @Test(testName = "API GET соответствие сущности User ver.2")
     public void getTestUserFull() {
         int userID = 1;
 
