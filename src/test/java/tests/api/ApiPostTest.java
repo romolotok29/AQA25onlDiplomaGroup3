@@ -18,7 +18,7 @@ public class ApiPostTest extends BaseApiTest {
 
     @Description("API Post Тест на проверку создания проекта")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "API Post проверка создания проекта")
+    @Test(testName = "API Post проверка создания проекта", description = "API Post проверка создания проекта")
     public void addProjectSimpleApi() {
         String endpoint = "index.php?/api/v2/add_project";
 
@@ -45,9 +45,10 @@ public class ApiPostTest extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK);
     }
 
-    @Description("API Тест на проверку создания проекта cо всеми полями")
+    @Description("API Post Тест на проверку создания проекта cо всеми полями")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "API Post создание проекта cо всеми полями")
+    @Test(testName = "API Post создание проекта cо всеми полями",
+            description = "API Post создание проекта cо всеми полями")
     public void addProjectFullApi() {
         String endpoint = "index.php?/api/v2/add_project";
 
@@ -73,9 +74,10 @@ public class ApiPostTest extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK);
     }
 
-    @Description("API Post создание проекта c использованием Json")
+    @Description("API Post Тест на проверку создания проекта c использованием Json")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "API Тест на проверку создания проекта c использованием Json")
+    @Test(testName = "API Post создание проекта c использованием Json",
+            description = "API Post создание проекта c использованием Json")
     public void addProjectUsingJsonFileTest() {
         String endpoint = "index.php?/api/v2/add_project";
 
