@@ -59,5 +59,5 @@ public class LoginPage extends BasePage {
     public void clickLoginButton() {
         getLoginButton().click();
     }
-
 }
+

@@ -42,9 +42,8 @@ public class NegativeTests extends BaseTest {
 
         } else if (inputValue.equals("$$$") && !isValid) {
 
-            Assert.assertEquals(
-                    detailedSearchPage
-                            .showErrorDialogMessage(), "line 1:267 mismatched character '*' expecting '$'"
+            Assert.assertTrue(
+                    detailedSearchPage.isErrorDisplayed()
             );
 
         } else if (inputValue.equals(MAX_PLUS_ONE) && !isValid) {

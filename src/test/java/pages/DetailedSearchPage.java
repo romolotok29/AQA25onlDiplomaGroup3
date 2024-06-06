@@ -65,6 +65,13 @@ public class DetailedSearchPage extends BasePage {
         return wait.waitForVisibility(searchItemsBoxLocator);
     }
 
+    public boolean isErrorDisplayed() {
+        if (getErrorTitle().isDisplayed()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public boolean isSearchItemsBoxShown() {
         if (getSearchItemsBox().isDisplayed()) {
