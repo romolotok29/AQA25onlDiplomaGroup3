@@ -22,7 +22,6 @@ public class ProjectService implements IProjectService {
                 .as(Project.class);
     }
 
-
     @Override
     public Project addProject(Project project) {
         return given()

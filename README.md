@@ -1,12 +1,4 @@
-Данные для входа в сиситему :
-
-url=https://graduationgroup3.testrail.io/
-
-username=roland.from.laptop@gmail.com
-
-password=trialAccount24#
-
-Задание на дипломную работу
+Дипломная работа
 
 Основное задание:
 1. 	Реализовать фреймворк согласно индивидуальному заданию

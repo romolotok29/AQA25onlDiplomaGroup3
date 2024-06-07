@@ -30,7 +30,6 @@ public class MilestonesOverviewPage extends BasePage {
         return wait.waitForAllVisibleElementsLocatedBy(milestonesList);
     }
 
-
     public boolean isMilestoneInGrid(Milestone milestone) {
         for (WebElement element :
                 getMilestonesList()) {

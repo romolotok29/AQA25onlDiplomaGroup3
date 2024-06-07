@@ -37,7 +37,7 @@ public class BaseTest {
     public void setUpData() {
         user = User
                 .builder()
-                .email(ReadProperties.username())
+                .email(ReadProperties.email())
                 .password(ReadProperties.password())
                 .build();
 
