@@ -36,7 +36,7 @@ public abstract class BasePage {
         driver.get(ReadProperties.getUrl() + getPagePath());
     }
 
-    public String moveToElement(WebElement element) {
+    public void moveToElement(WebElement element) {
         Actions actions = new Actions(driver);
 
         actions
@@ -44,8 +44,6 @@ public abstract class BasePage {
                 .build()
                 .perform();
 
-        String text = String.valueOf(element);
-
-        return text;
     }
+
 }

@@ -38,7 +38,6 @@ public class LoginSteps extends BaseSteps {
 
         fillUserWithIncorrectInfo(user, password);
 
-
         logger.error("Error: Incorrect login.");
         return loginPage;
     }

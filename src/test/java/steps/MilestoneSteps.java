@@ -13,7 +13,7 @@ public class MilestoneSteps extends BaseSteps {
         super(driver);
     }
 
-    public AddMilestonePage clickAddMilestoneButton() {
+    public AddMilestonePage clickAddMilestoneSideButton() {
         projectInfoPage
                 .getAddMilestoneToProject()
                 .click();
@@ -34,7 +34,7 @@ public class MilestoneSteps extends BaseSteps {
     public MilestonesOverviewPage addMilestoneSuccessfully(Project project, Milestone milestone) {
         dashboardPage.clickOnProjectInGrid(project);
 
-        clickAddMilestoneButton();
+        clickAddMilestoneSideButton();
         fillMilestoneInfo(milestone);
 
         logger.info("Milestone added successfully!");
@@ -50,13 +50,12 @@ public class MilestoneSteps extends BaseSteps {
                 .fileUploadInsideMilestone();
     }
 
-    public AddMilestonePage uploadFileInsideMilestone(Project project, Milestone milestone) {
+    public void uploadFileInsideMilestone(Project project, Milestone milestone) {
         dashboardPage.clickOnProjectInGrid(project);
 
-        clickAddMilestoneButton();
+        clickAddMilestoneSideButton();
         fillMilestoneInfoWithFileUpload(milestone);
 
         logger.info("File uploaded successfully!");
-        return addMilestonePage;
     }
 }

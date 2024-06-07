@@ -112,11 +112,10 @@ public class AddMilestonePage extends BasePage {
     }
 
     public void clickAddMilestoneButton() {
-        wait.waitForVisibility(addMilestoneButton);
         getMilestoneAddButton().click();
     }
 
-    public AddMilestonePage fileUploadInsideMilestone() {
+    public void fileUploadInsideMilestone() {
         clickUploadFileInsideMilestoneButton();
 
         String path = AddMilestonePage.class.getClassLoader().getResource("upload/quality-assurance.jpg")
@@ -129,6 +128,6 @@ public class AddMilestonePage extends BasePage {
         clickSubmitAttachButton();
 
         logger.info("Uploading a file...");
-        return this;
     }
+
 }
