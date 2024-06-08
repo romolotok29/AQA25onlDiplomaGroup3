@@ -31,6 +31,33 @@ public class ApiGetTest extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK);
     }
 
+    @Description("API GET Тест на проверку существования определенного проекта")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(testName = "API GET существование страницы проекта", description = "API GET существование страницы проекта")
+    public void getProjectTest() {
+        String endpoint = "/api/v2/project/548";
+
+        given()
+                .when()
+                .get(endpoint)
+                .then().log().body()
+                .statusCode(HttpStatus.SC_NOT_FOUND);
+    }
+
+    @Description("API GET Тест на проверку существования Milestone")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(testName = "API GET существование страницы Milestone",
+            description = "API GET существование страницы Milestone")
+    public void getMilestoneTest() {
+        String endpoint = "/api/v2/get_milestone/246";
+
+        given()
+                .when()
+                .get(endpoint)
+                .then().log().body()
+                .statusCode(HttpStatus.SC_NOT_FOUND);
+    }
+
     @Description("API GET Тест на соответствие сущности User")
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "API GET соответствие сущности User", description = "API GET соответствие сущности User")
