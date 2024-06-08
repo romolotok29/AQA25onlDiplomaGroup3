@@ -39,6 +39,7 @@ public class BrowsersService {
         chromeOptions.addArguments("--ignore-certificate-errors");
         chromeOptions.addArguments("--silent");
         chromeOptions.addArguments("--incognito");
+        chromeOptions.addArguments("--headless");
         return chromeOptions;
     }
 
