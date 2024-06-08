@@ -66,19 +66,11 @@ public class DetailedSearchPage extends BasePage {
     }
 
     public boolean isErrorDisplayed() {
-        if (getErrorTitle().isDisplayed()) {
-            return true;
-        } else {
-            return false;
-        }
+        return getErrorTitle().isDisplayed();
     }
 
     public boolean isSearchItemsBoxShown() {
-        if (getSearchItemsBox().isDisplayed()) {
-            return true;
-        } else {
-            return false;
-        }
+        return getSearchItemsBox().isDisplayed();
     }
 
     public void boundaryValues(String inputValue) {

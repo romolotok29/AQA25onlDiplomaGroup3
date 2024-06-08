@@ -41,5 +41,4 @@ public class LoginSteps extends BaseSteps {
         logger.error("Error: Incorrect login.");
         return loginPage;
     }
-
 }
