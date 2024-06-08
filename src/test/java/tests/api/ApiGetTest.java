@@ -38,7 +38,7 @@ public class ApiGetTest extends BaseApiTest {
         int userID = 1;
 
         User expectedUser = User.builder()
-                .name("Roland Molotok")
+                .name("Rolands Molotoks")
                 .email("roland.from.laptop@gmail.com")
                 .isActive(true)
                 .roleId(1)
@@ -76,7 +76,7 @@ public class ApiGetTest extends BaseApiTest {
                 .response();
 
         response.then().log().body();
-        Assert.assertEquals(response.getBody().jsonPath().getString("name"), "Roland Molotok");
+        Assert.assertEquals(response.getBody().jsonPath().getString("name"), "Rolands Molotoks");
         Assert.assertEquals(response.getBody().jsonPath().getInt("id"), 1);
     }
 }
