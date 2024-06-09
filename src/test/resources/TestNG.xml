@@ -5,11 +5,19 @@
         <classes>
             <class name="tests.gui.PositiveTests">
                 <methods>
+                    <include name="boundaryValuesTest"/>
+                    <include name="hiddenTextTest"/>
                     <include name="addFullProjectTest"/>
+                    <include name="addMilestoneTest"/>
+                    <include name="deleteProjectTest"/>
+                    <include name="dialogWindowTest"/>
+                    <include name="fileUploadTest"/>
                 </methods>
             </class>
             <class name="tests.api.ApiPostTest">
                 <methods>
+                    <include name="addProjectSimpleApiTest"/>
+                    <include name="addProjectFullApiTest"/>
                     <include name="addProjectUsingJsonFileTest"/>
                 </methods>
             </class>
@@ -20,11 +28,17 @@
             <class name="tests.gui.NegativeTests">
                 <methods>
                     <include name="incorrectLoginTest"/>
+                    <include name="dataExceedsTheLimitTest"/>
+                    <include name="allureScreenshotTest"/>
                 </methods>
             </class>
             <class name="tests.api.ApiGetTest">
                 <methods>
                     <include name="getAllProjectsTest"/>
+                    <include name="getProjectTest"/>
+                    <include name="getMilestoneTest"/>
+                    <include name="getUserSimpleTest"/>
+                    <include name="getUserFullTest"/>
                 </methods>
             </class>
         </classes>
