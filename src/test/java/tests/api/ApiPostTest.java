@@ -19,7 +19,7 @@ public class ApiPostTest extends BaseApiTest {
     @Description("API Post Тест на проверку создания проекта")
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "API Post проверка создания проекта", description = "API Post проверка создания проекта")
-    public void addProjectSimpleApi() {
+    public void addProjectSimpleApiTest() {
         String endpoint = "index.php?/api/v2/add_project";
 
         Project expectedProject = new Project();
@@ -49,7 +49,7 @@ public class ApiPostTest extends BaseApiTest {
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "API Post создание проекта cо всеми полями",
             description = "API Post создание проекта cо всеми полями")
-    public void addProjectFullApi() {
+    public void addProjectFullApiTest() {
         String endpoint = "index.php?/api/v2/add_project";
 
         Project expectedProject = new Project();

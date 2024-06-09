@@ -61,7 +61,7 @@ public class ApiGetTest extends BaseApiTest {
     @Description("API GET Тест на соответствие сущности User")
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "API GET соответствие сущности User", description = "API GET соответствие сущности User")
-    public void getTestUserSimple() {
+    public void getUserSimpleTest() {
         int userID = 1;
 
         User expectedUser = User.builder()
@@ -89,7 +89,7 @@ public class ApiGetTest extends BaseApiTest {
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "API GET соответствие сущности User ver.2",
             description = "API GET соответствие сущности User ver.2")
-    public void getTestUserFull() {
+    public void getUserFullTest() {
         int userID = 1;
 
         Response response = given()
