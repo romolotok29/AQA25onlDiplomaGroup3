@@ -17,4 +17,5 @@ public class Project {
     private boolean isAnnouncementShown;
     private int projectType;
     private boolean isApprovalEnabled;
+
 }

@@ -8,4 +8,5 @@ public interface IProjectService {
     Project addProject(Project project);
     Project updateProject(int id, Project project);
     HttpStatus deleteProject(int id);
+
 }

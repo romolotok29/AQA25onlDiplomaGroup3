@@ -106,4 +106,5 @@ public class ApiGetTest extends BaseApiTest {
         Assert.assertEquals(response.getBody().jsonPath().getString("name"), "Rolands Molotoks");
         Assert.assertEquals(response.getBody().jsonPath().getInt("id"), 1);
     }
+
 }

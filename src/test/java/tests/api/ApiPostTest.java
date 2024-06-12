@@ -90,4 +90,5 @@ public class ApiPostTest extends BaseApiTest {
                 .log().body()
                 .statusCode(HttpStatus.SC_OK);
     }
+
 }

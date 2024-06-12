@@ -35,4 +35,5 @@ public class BaseSteps {
         this.addMilestonePage = new AddMilestonePage(driver);
         this.milestonesOverviewPage = new MilestonesOverviewPage(driver);
     }
+
 }

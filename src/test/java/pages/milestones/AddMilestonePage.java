@@ -118,7 +118,7 @@ public class AddMilestonePage extends BasePage {
     public void fileUploadInsideMilestone() {
         clickUploadFileInsideMilestoneButton();
 
-        String path = AddMilestonePage.class.getClassLoader().getResource("upload/quality-assurance.jpg")
+        String path = AddMilestonePage.class.getClassLoader().getResource("upload/quality-assurance-image.jpg")
                 .getPath().substring(1);
 
         getFilePreview().sendKeys(path);
