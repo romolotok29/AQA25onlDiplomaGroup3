@@ -1,5 +1,6 @@
 package baseEntities;
 
+import com.google.common.collect.ImmutableMap;
 import configuration.ReadProperties;
 import core.BrowsersService;
 import models.Milestone;
@@ -14,10 +15,9 @@ import pages.milestones.AddMilestonePage;
 import steps.LoginSteps;
 import steps.MilestoneSteps;
 import steps.ProjectSteps;
-import utils.FileUtil;
 import utils.InvokedListener;
 
-import java.io.IOException;
+import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 
 @Listeners(InvokedListener.class)
 public class BaseTest {
@@ -35,11 +35,11 @@ public class BaseTest {
 
     @BeforeSuite
     public void setAllureEnvironment() {
-        try {
-            FileUtil.copyEnvironmentFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        allureEnvironmentWriter(ImmutableMap.<String, String>builder()
+                .put("Browser", "Chrome")
+                .put("Browser.Version", "126.0.6478.62")
+                .put("Stand", "Production")
+                .build());
     }
 
     @BeforeTest

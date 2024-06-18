@@ -24,6 +24,7 @@
         <javafaker.version>1.0.2</javafaker.version>
         <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
         <aspectj.version>1.9.5</aspectj.version>
+        <allure-environment-writer.version>1.0.0</allure-environment-writer.version>
     </properties>
 
     <dependencies>
@@ -82,6 +83,12 @@
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>${javafaker.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.automatedowl/allure-environment-writer -->
+        <dependency>
+            <groupId>com.github.automatedowl</groupId>
+            <artifactId>allure-environment-writer</artifactId>
+            <version>${allure-environment-writer.version}</version>
         </dependency>
     </dependencies>
 
