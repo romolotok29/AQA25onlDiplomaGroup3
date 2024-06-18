@@ -7,17 +7,17 @@ import models.Project;
 import models.User;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 import pages.DashboardPage;
 import pages.DetailedSearchPage;
 import pages.milestones.AddMilestonePage;
 import steps.LoginSteps;
 import steps.MilestoneSteps;
 import steps.ProjectSteps;
+import utils.FileUtil;
 import utils.InvokedListener;
+
+import java.io.IOException;
 
 @Listeners(InvokedListener.class)
 public class BaseTest {
@@ -32,6 +32,15 @@ public class BaseTest {
     protected DashboardPage dashboardPage;
     protected AddMilestonePage addMilestonePage;
     protected DetailedSearchPage detailedSearchPage;
+
+    @BeforeSuite
+    public void setAllureEnvironment() {
+        try {
+            FileUtil.copyEnvironmentFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @BeforeTest
     public void setUpData() {
