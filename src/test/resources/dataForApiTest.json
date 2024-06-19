@@ -3,6 +3,5 @@
   "announcement": "Announcement",
   "show_announcement": true,
   "suite_mode": 1,
-  "case_statuses_enabled": true,
-
+  "case_statuses_enabled": true
 }

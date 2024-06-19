@@ -23,18 +23,58 @@ public class ApiGetTest extends BaseApiTest {
     public void getAllProjectsTest() {
         String endpoint = "index.php?/api/v2/get_projects";
 
-        given()
+        Response response = given()
                 .when()
                 .get(endpoint)
                 .then().log().body()
                 .body("limit", is(250))
-                .statusCode(HttpStatus.SC_OK);
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .response();
+
+        Assert.assertEquals(response.getBody().jsonPath().getInt("size"), 10);
     }
 
-    @Description("API GET Тест на проверку существования определенного проекта")
+    @Description("API GET Тест на проверку имеющихся пользователей")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "API GET существование страницы проекта", description = "API GET существование страницы проекта")
-    public void getProjectTest() {
+    @Test(testName = "API GET проверка имеющихся Users", description = "API GET проверка имеющихся пользователей")
+    public void getAllUsersTest() {
+
+        Response response = given()
+                .when()
+                .get(Endpoints.GET_USERS)
+                .then().log().body()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .response();
+
+        Assert.assertEquals(response.getBody().jsonPath().getInt("size"), 2);
+    }
+
+    @Description("API GET Тест на проверку несуществующего User")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(testName = "API GET несуществующий пользователь", description = "API GET несуществующий пользователь")
+    public void invalidUserTest() {
+        String endpoint = "/index.php?/api/v2/get_user/3";
+
+        Response response = given()
+                .when()
+                .get(endpoint)
+                .then().log().body()
+                .assertThat()
+                .statusCode(HttpStatus.SC_BAD_REQUEST)
+                .extract()
+                .response();
+
+        Assert.assertEquals(
+                response.getBody().asString(), "{\"error\":\"Field :user is not a valid user.\"}");
+    }
+
+    @Description("API GET Тест на проверку несуществующего проекта")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(testName = "API GET несуществующий проект", description = "API GET несуществующий проект")
+    public void invalidProjectTest() {
         String endpoint = "/api/v2/project/548";
 
         given()
@@ -44,11 +84,10 @@ public class ApiGetTest extends BaseApiTest {
                 .statusCode(HttpStatus.SC_NOT_FOUND);
     }
 
-    @Description("API GET Тест на проверку существования Milestone")
+    @Description("API GET Тест на проверку несуществующего Milestone")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "API GET существование страницы Milestone",
-            description = "API GET существование страницы Milestone")
-    public void getMilestoneTest() {
+    @Test(testName = "API GET несуществующий Milestone", description = "API GET несуществующий Milestone")
+    public void invalidMilestoneTest() {
         String endpoint = "/api/v2/get_milestone/246";
 
         given()
@@ -62,11 +101,11 @@ public class ApiGetTest extends BaseApiTest {
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "API GET соответствие сущности User", description = "API GET соответствие сущности User")
     public void getUserSimpleTest() {
-        int userID = 1;
+        int userID = 2;
 
         User expectedUser = User.builder()
-                .name("Rolands Molotoks")
-                .email("roland.from.laptop@gmail.com")
+                .name("Artem Krasnovski")
+                .email("kras.tioma@gmail.com")
                 .isActive(true)
                 .roleId(1)
                 .role("Lead")
@@ -85,7 +124,7 @@ public class ApiGetTest extends BaseApiTest {
         Assert.assertTrue(expectedUser.equals(actualUser));
     }
 
-    @Description("API GET Тест_2 на соответствие сущности User")
+    @Description("API GET Тест на проверку существования первого пользователя")
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "API GET соответствие сущности User ver.2",
             description = "API GET соответствие сущности User ver.2")
@@ -105,6 +144,26 @@ public class ApiGetTest extends BaseApiTest {
         response.then().log().body();
         Assert.assertEquals(response.getBody().jsonPath().getString("name"), "Rolands Molotoks");
         Assert.assertEquals(response.getBody().jsonPath().getInt("id"), 1);
+    }
+
+    @Description("API GET Тест на проверку существования второго пользователя")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(testName = "API GET User ver.3", description = "API GET User ver.3")
+    public void getUserByEmailTest() {
+        String email = "kras.tioma@gmail.com";
+
+        Response response = given()
+                .pathParam("email", email)
+                .get(Endpoints.GET_USER_BY_EMAIL)
+                .then()
+                .log().body()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .response();
+
+        Assert.assertEquals(response.getBody().jsonPath().getString("email"), "kras.tioma@gmail.com");
+        Assert.assertEquals(response.getBody().jsonPath().getInt("id"), 2);
     }
 
 }
