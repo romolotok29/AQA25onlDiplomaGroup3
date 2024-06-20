@@ -46,4 +46,15 @@ public abstract class BasePage {
 
     }
 
+    public String correctFilePath(String filePath) {
+        String os = System.getProperty("os.name").toLowerCase();
+
+        if (os.contains("win")) {
+            filePath = filePath.replace("/", "");
+
+        } else if (os.contains("mac") || os.contains("nix") || os.contains("nux")) {
+            filePath = filePath.replace("/", "\\\\");
+        }
+        return filePath;
+    }
 }

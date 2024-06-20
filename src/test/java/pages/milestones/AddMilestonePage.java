@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 public class AddMilestonePage extends BasePage {
 
     private Logger logger = LogManager.getLogger(AddMilestonePage.class);
-    private final static String pagePath = "";
+    private final static String pagePath = "";;
     private final By milestoneNameInput = By.id("name");
     private final By milestoneReferenceInput = By.id("reference");
     private final By milestoneDescriptionInputLocator = By.id("description_display");
@@ -116,10 +116,13 @@ public class AddMilestonePage extends BasePage {
     }
 
     public void fileUploadInsideMilestone() {
+
         clickUploadFileInsideMilestoneButton();
 
         String path = AddMilestonePage.class.getClassLoader().getResource("upload/quality-assurance-image.jpg")
                 .getPath().substring(1);
+
+        correctFilePath(path);
 
         getFilePreview().sendKeys(path);
 
