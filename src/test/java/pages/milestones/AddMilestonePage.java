@@ -2,15 +2,12 @@ package pages.milestones;
 
 import baseEntities.BasePage;
 import models.Milestone;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class AddMilestonePage extends BasePage {
 
-    private Logger logger = LogManager.getLogger(AddMilestonePage.class);
     private final static String pagePath = "";;
     private final By milestoneNameInput = By.id("name");
     private final By milestoneReferenceInput = By.id("reference");
@@ -120,9 +117,9 @@ public class AddMilestonePage extends BasePage {
         clickUploadFileInsideMilestoneButton();
 
         String path = AddMilestonePage.class.getClassLoader().getResource("upload/quality-assurance-image.jpg")
-                .getPath().substring(1);
+                .getPath();
 
-        correctFilePath(path);
+        path = correctFilePath(path);
 
         getFilePreview().sendKeys(path);
 

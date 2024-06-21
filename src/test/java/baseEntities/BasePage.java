@@ -2,6 +2,8 @@ package baseEntities;
 
 import configuration.ReadProperties;
 import core.WaitsService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +13,7 @@ public abstract class BasePage {
 
     protected WebDriver driver;
     protected WaitsService wait;
+    protected Logger logger;
 
     public BasePage(WebDriver driver) {
         this(driver, false);
@@ -19,6 +22,7 @@ public abstract class BasePage {
     public BasePage(WebDriver driver, boolean openPageByUrl) {
         this.driver = driver;
         this.wait = new WaitsService(driver);
+        this.logger = LogManager.getLogger(BasePage.class);
 
         if (openPageByUrl) {
             openPageByUrl();
@@ -49,11 +53,11 @@ public abstract class BasePage {
     public String correctFilePath(String filePath) {
         String os = System.getProperty("os.name").toLowerCase();
 
-        if (os.contains("win")) {
-            filePath = filePath.replace("/", "");
+        if (os.contains("win") && filePath.startsWith("/")) {
+            filePath = filePath.substring(1);
 
         } else if (os.contains("mac") || os.contains("nix") || os.contains("nux")) {
-            filePath = filePath.replace("/", "\\\\");
+            logger.info("There is nothing to change for Mac, Unix and Linux.");
         }
         return filePath;
     }
