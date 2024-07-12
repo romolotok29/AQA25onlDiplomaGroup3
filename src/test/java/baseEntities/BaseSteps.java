@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import pages.DashboardPage;
+import pages.IntegrationPage;
 import pages.LoginPage;
 import pages.milestones.AddMilestonePage;
 import pages.milestones.MilestonesOverviewPage;
@@ -22,6 +23,7 @@ public class BaseSteps {
     protected ProjectsOverviewPage projectsOverviewPage;
     protected AddMilestonePage addMilestonePage;
     protected MilestonesOverviewPage milestonesOverviewPage;
+    protected IntegrationPage integrationPage;
 
     public BaseSteps(WebDriver driver) {
         this.driver = driver;
@@ -34,6 +36,7 @@ public class BaseSteps {
         this.projectsOverviewPage = new ProjectsOverviewPage(driver);
         this.addMilestonePage = new AddMilestonePage(driver);
         this.milestonesOverviewPage = new MilestonesOverviewPage(driver);
+        this.integrationPage = new IntegrationPage(driver, false);
     }
 
 }
