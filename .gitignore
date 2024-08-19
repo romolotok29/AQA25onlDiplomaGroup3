@@ -1,0 +1,11 @@
+.idea/
+!.idea/modules.xml
+!.idea/vcs.xml
+!.idea/Project_Default.xml
+
+.mvn/wrapper/MavenWrapperDownloader.java
+
+allure-results/
+target/
+
+*.iml
