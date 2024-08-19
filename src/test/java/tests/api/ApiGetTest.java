@@ -12,6 +12,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.Endpoints;
 
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
@@ -50,6 +52,27 @@ public class ApiGetTest extends BaseApiTest {
                 .response();
 
         Assert.assertEquals(response.getBody().jsonPath().getInt("size"), 2);
+    }
+
+    @Description("API GET Тест на проверку имеющихся пользователей по id проекта")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(testName = "API GET проверка Users по id проекта", description = "API GET проверка Users по id проекта")
+    public void getAllUsersByProjectIdTest() {
+        int projectID = 60;
+
+        Response response = given()
+                .pathParam("project_id", projectID)
+                .get(Endpoints.GET_USERS_BY_PROJECT_ID)
+                .then().log().body()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .response();
+
+        List<User> users = response.jsonPath().getList("users", User.class);
+
+        Assert.assertEquals(users.size(), 2);
+
     }
 
     @Description("API GET Тест на проверку несуществующего User")
