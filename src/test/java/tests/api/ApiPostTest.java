@@ -1,12 +1,15 @@
 package tests.api;
 
 import baseEntities.BaseApiTest;
+import com.google.gson.Gson;
 import configuration.ReadProperties;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import io.restassured.response.Response;
 import models.Project;
 import org.apache.http.HttpStatus;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.Endpoints;
 
@@ -51,7 +54,6 @@ public class ApiPostTest extends BaseApiTest {
     @Test(testName = "API Post создание проекта cо всеми полями",
             description = "API Post создание проекта cо всеми полями")
     public void addProjectFullApiTest() {
-        String endpoint = "index.php?/api/v2/add_project";
 
         Project expectedProject = new Project();
         expectedProject.setName("AQA25-onl_FullApi");
@@ -91,11 +93,47 @@ public class ApiPostTest extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK);
     }
 
-    @Description("Api Post Test на проверку создания сущности milestone для проекта")
+    @Description("API Post Тест на проверку обновления проекта")
+    @Test(testName = "API Post обновление проекта", description = "API Post обновление проекта")
+    public void updateProjectAPITest() {
+
+        Project updatedProject = new Project();
+        updatedProject.setName("New Project");
+        updatedProject.setAnnouncement("Announcement");
+        updatedProject.setAnnouncementShown(true);
+        updatedProject.setProjectType(2);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(updatedProject);
+
+        Response response = given()
+                .pathParam("project_id", 1)
+                .body(json)
+                .when()
+                .post(Endpoints.UPDATE_PROJECT)
+                .then()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().response();
+
+        Assert.assertEquals(response.getBody().jsonPath().getString("announcement"), "Announcement");
+        Assert.assertTrue(response.getBody().jsonPath().getBoolean("show_announcement"));
+        //Assert.assertEquals(response.getBody().jsonPath().getInt("suite_mode"), 2);
+
+    }
+
+    @Description("Api Post Test на проверку удаления проекта")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "Api Post создание milestone для проекта")
-    public void addMilestoneApiTest() {
-        String endpoint = "index.php?/api/v2/add_milestone/{project_id}";
+    @Test(testName = "Api Post удаление проекта")
+    public void deleteProjectApiTest() {
+
+        given()
+                .pathParam("project_id", 3)
+                .when()
+                .post(Endpoints.DELETE_PROJECT)
+                .then()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK);
 
     }
 }

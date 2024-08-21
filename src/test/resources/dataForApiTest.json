@@ -1,7 +1,6 @@
 {
-  "name": "Project_ApiFromJson",
-  "announcement": "Data from json for project creation",
+  "name": "Project Example",
+  "announcement": "New Announcement",
   "show_announcement": true,
-  "suite_mode": 1,
-  "case_statuses_enabled": true
+  "suite_mode": 2
 }

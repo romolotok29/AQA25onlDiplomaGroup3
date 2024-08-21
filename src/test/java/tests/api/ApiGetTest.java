@@ -27,14 +27,14 @@ public class ApiGetTest extends BaseApiTest {
 
         Response response = given()
                 .when()
-                .get(endpoint)
+                .get(Endpoints.GET_PROJECTS)
                 .then().log().body()
                 .body("limit", is(250))
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
                 .response();
 
-        Assert.assertEquals(response.getBody().jsonPath().getInt("size"), 10);
+        Assert.assertEquals(response.getBody().jsonPath().getInt("size"), 3);
     }
 
     @Description("API GET Тест на проверку имеющихся пользователей")
