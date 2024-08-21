@@ -10,8 +10,8 @@ import static io.restassured.RestAssured.given;
 public class ProjectService implements IProjectService {
     @Override
     public Project getProject(int id) {
-        return given().
-                pathParam("project_id", id)
+        return given()
+                .pathParam("project_id", id)
                 .log().body()
                 .when()
                 .get(Endpoints.GET_PROJECT)

@@ -8,6 +8,7 @@ import io.qameta.allure.SeverityLevel;
 import models.Project;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
+import utils.Endpoints;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -69,7 +70,7 @@ public class ApiPostTest extends BaseApiTest {
         given()
                 .body(jsonAsMap)
                 .when()
-                .post(endpoint)
+                .post(Endpoints.ADD_PROJECT)
                 .then().log().body()
                 .statusCode(HttpStatus.SC_OK);
     }
@@ -79,16 +80,22 @@ public class ApiPostTest extends BaseApiTest {
     @Test(testName = "API Post создание проекта c использованием Json",
             description = "API Post создание проекта c использованием Json")
     public void addProjectUsingJsonFileTest() {
-        String endpoint = "index.php?/api/v2/add_project";
 
         given()
                 .body(ReadProperties.class.getClassLoader().getResourceAsStream("dataForApiTest.json"))
                 .log().body()
                 .when()
-                .post(endpoint)
+                .post(Endpoints.ADD_PROJECT)
                 .then()
                 .log().body()
                 .statusCode(HttpStatus.SC_OK);
     }
 
+    @Description("Api Post Test на проверку создания сущности milestone для проекта")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(testName = "Api Post создание milestone для проекта")
+    public void addMilestoneApiTest() {
+        String endpoint = "index.php?/api/v2/add_milestone/{project_id}";
+
+    }
 }
