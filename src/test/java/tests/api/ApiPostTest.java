@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 public class ApiPostTest extends BaseApiTest {
 
@@ -83,14 +84,20 @@ public class ApiPostTest extends BaseApiTest {
             description = "API Post создание проекта c использованием Json")
     public void addProjectUsingJsonFileTest() {
 
-        given()
+        Response response = given()
                 .body(ReadProperties.class.getClassLoader().getResourceAsStream("dataForApiTest.json"))
                 .log().body()
                 .when()
                 .post(Endpoints.ADD_PROJECT)
                 .then()
                 .log().body()
-                .statusCode(HttpStatus.SC_OK);
+                .statusCode(HttpStatus.SC_OK)
+                .extract().response();
+
+        Assert.assertEquals(response.getBody().jsonPath().getInt("suite_mode"), 2);
+        Assert.assertEquals(response.getBody().jsonPath().getString("announcement"), "Announcement 2");
+        Assert.assertTrue(response.getBody().jsonPath().getBoolean("show_announcement"));
+
     }
 
     @Description("API Post Тест на проверку обновления проекта")
@@ -99,26 +106,23 @@ public class ApiPostTest extends BaseApiTest {
 
         Project updatedProject = new Project();
         updatedProject.setName("New Project");
-        updatedProject.setAnnouncement("Announcement");
+        updatedProject.setAnnouncement("New Announcement");
         updatedProject.setAnnouncementShown(true);
-        updatedProject.setProjectType(2);
 
         Gson gson = new Gson();
         String json = gson.toJson(updatedProject);
 
-        Response response = given()
+        given()
                 .pathParam("project_id", 1)
                 .body(json)
                 .when()
                 .post(Endpoints.UPDATE_PROJECT)
                 .then()
                 .log().body()
+                .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .extract().response();
-
-        Assert.assertEquals(response.getBody().jsonPath().getString("announcement"), "Announcement");
-        Assert.assertTrue(response.getBody().jsonPath().getBoolean("show_announcement"));
-        //Assert.assertEquals(response.getBody().jsonPath().getInt("suite_mode"), 2);
+                .body("announcement", equalTo("New Announcement"))
+                .body("show_announcement", equalTo(true));
 
     }
 
@@ -136,4 +140,5 @@ public class ApiPostTest extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK);
 
     }
+
 }
