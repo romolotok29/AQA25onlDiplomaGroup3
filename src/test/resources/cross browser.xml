@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="CrossBrowserSuite" parallel="tests" thread-count="2">
-    <test name="ChromeTest">
+<suite name="Cross Browser Suite" parallel="tests" thread-count="2">
+    <test name="Chrome Test">
         <parameter name="browser" value="chrome">
             <classes>
                 <class name="tests.gui.NegativeTests">
@@ -12,8 +12,7 @@
             </classes>
         </parameter>
     </test>
-
-    <test name="EdgeTest">
+    <test name="Edge Test">
         <parameter name="browser" value="edge">
             <classes>
                 <class name="tests.gui.PositiveTests">

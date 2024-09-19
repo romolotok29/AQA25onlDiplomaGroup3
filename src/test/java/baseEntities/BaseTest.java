@@ -36,7 +36,7 @@ public class BaseTest {
     protected AddMilestonePage addMilestonePage;
     protected DetailedSearchPage detailedSearchPage;
 
-    @BeforeTest
+    @BeforeSuite
     public void setAllureEnvironment() {
         allureEnvironmentWriter(ImmutableMap.<String, String>builder()
                 .put("Browser", "Chrome")
