@@ -6,6 +6,9 @@ import io.github.bonigarcia.wdm.config.DriverManagerType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
 
@@ -13,12 +16,17 @@ public class BrowsersService {
     private WebDriver driver = null;
     private DriverManagerType driverManagerType;
 
-    public BrowsersService() {
-        switch (ReadProperties.browserName().toLowerCase()) {
+    public BrowsersService(String browser) {
+        switch (browser.toLowerCase()) {
             case "chrome":
                 driverManagerType = DriverManagerType.CHROME;
                 WebDriverManager.getInstance(driverManagerType).setup();
                 driver = new ChromeDriver(getChromeOptions());
+                break;
+            case "edge":
+                driverManagerType = DriverManagerType.EDGE;
+                WebDriverManager.getInstance(driverManagerType).setup();
+                driver = new EdgeDriver(getEdgeOptions());
                 break;
             default:
                 System.out.println("Browser " + ReadProperties.browserName() + " is not supported");
@@ -28,7 +36,7 @@ public class BrowsersService {
 
     public WebDriver getDriver() {
         driver.manage().deleteAllCookies();
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         return driver;
     }
@@ -39,7 +47,21 @@ public class BrowsersService {
         chromeOptions.addArguments("--ignore-certificate-errors");
         chromeOptions.addArguments("--silent");
         chromeOptions.addArguments("--incognito");
+        //chromeOptions.addArguments("--headless");
+
         return chromeOptions;
+    }
+
+    private EdgeOptions getEdgeOptions() {
+        EdgeOptions edgeOptions = new EdgeOptions();
+        edgeOptions.getBrowserVersion();
+        edgeOptions.addArguments("--disable-gpu");
+        edgeOptions.addArguments("--ignore-certificate-errors");
+        edgeOptions.addArguments("--silent");
+        edgeOptions.addArguments("--incognito");
+        //edgeOptions.addArguments("--headless");
+
+        return edgeOptions;
     }
 
 }

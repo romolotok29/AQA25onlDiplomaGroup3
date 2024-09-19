@@ -35,4 +35,11 @@ public class ReadProperties {
         return Integer.parseInt(properties.getProperty("timeout"));
     }
 
+    /*
+    public static boolean headless() {
+        return properties.getProperty("headless").equalsIgnoreCase("true");
+    }
+
+     */
+
 }

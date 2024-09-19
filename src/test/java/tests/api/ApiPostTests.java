@@ -19,7 +19,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class ApiPostTest extends BaseApiTest {
+public class ApiPostTests extends BaseApiTest {
 
     @Description("API Post Тест на проверку создания проекта")
     @Severity(SeverityLevel.NORMAL)

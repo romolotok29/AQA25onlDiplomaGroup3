@@ -17,7 +17,7 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
-public class ApiGetTest extends BaseApiTest {
+public class ApiGetTests extends BaseApiTest {
 
     @Description("API GET Тест на проверку имеющихся проектов")
     @Severity(SeverityLevel.NORMAL)

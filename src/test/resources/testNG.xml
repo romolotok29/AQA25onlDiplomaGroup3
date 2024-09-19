@@ -14,7 +14,7 @@
                     <include name="fileUploadTest"/>
                 </methods>
             </class>
-            <class name="tests.api.ApiPostTest">
+            <class name="tests.api.ApiPostTests">
                 <methods>
                     <include name="addProjectSimpleApiTest"/>
                     <include name="addProjectFullApiTest"/>
@@ -32,7 +32,7 @@
                     <include name="allureScreenshotTest"/>
                 </methods>
             </class>
-            <class name="tests.api.ApiGetTest">
+            <class name="tests.api.ApiGetTests">
                 <methods>
                     <include name="getAllProjectsTest"/>
                     <include name="getProjectTest"/>

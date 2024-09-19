@@ -7,6 +7,8 @@ import models.Milestone;
 import models.Project;
 import models.User;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.DashboardPage;
@@ -22,6 +24,7 @@ import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnviro
 @Listeners(InvokedListener.class)
 public class BaseTest {
 
+    //private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     protected WebDriver driver;
     protected User user;
     protected Project testProject;
@@ -33,7 +36,7 @@ public class BaseTest {
     protected AddMilestonePage addMilestonePage;
     protected DetailedSearchPage detailedSearchPage;
 
-    @BeforeSuite
+    @BeforeTest
     public void setAllureEnvironment() {
         allureEnvironmentWriter(ImmutableMap.<String, String>builder()
                 .put("Browser", "Chrome")
@@ -67,15 +70,23 @@ public class BaseTest {
                 .build();
     }
 
+    @Parameters("browser")
     @BeforeMethod
-    public void setUp(ITestContext iTestContext) {
-        driver = new BrowsersService().getDriver();
+    public void setUp(@Optional String browser, ITestContext iTestContext) {
+
+        if (browser == null || browser.isEmpty()) {
+            browser = ReadProperties.browserName();
+        }
+
+        driver = new BrowsersService(browser).getDriver();
         this.setDriverToContext(iTestContext, driver);
         driver.get(ReadProperties.getUrl());
+
         loginSteps = new LoginSteps(driver);
         loginSteps.successfulLogin(user);
         projectSteps = new ProjectSteps(driver);
         milestoneSteps = new MilestoneSteps(driver);
+
         dashboardPage = new DashboardPage(driver, false);
         addMilestonePage = new AddMilestonePage(driver);
         detailedSearchPage = new DetailedSearchPage(driver, false);
@@ -87,7 +98,7 @@ public class BaseTest {
         driver.quit();
     }
 
-    public static void setDriverToContext(ITestContext iTestContext, WebDriver driver){
+    public static void setDriverToContext(ITestContext iTestContext, WebDriver driver) {
         iTestContext.setAttribute("WebDriver", driver);
     }
 
