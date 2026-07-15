@@ -1,14 +1,16 @@
 package pages.milestones;
 
 import baseEntities.BasePage;
+import lombok.extern.slf4j.Slf4j;
 import models.Milestone;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+@Slf4j
 public class AddMilestonePage extends BasePage {
 
-    private final static String pagePath = "";;
+    private final static String pagePath = "";
     private final By milestoneNameInput = By.id("name");
     private final By milestoneReferenceInput = By.id("reference");
     private final By milestoneDescriptionInputLocator = By.id("description_display");
@@ -101,11 +103,7 @@ public class AddMilestonePage extends BasePage {
     }
 
     public boolean isFileDisplayedOnScreen() {
-        if (getFileLocationOnScreen().isDisplayed()) {
-            return true;
-        } else {
-            return false;
-        }
+        return getFileLocationOnScreen().isDisplayed();
     }
 
     public void clickAddMilestoneButton() {
@@ -123,11 +121,11 @@ public class AddMilestonePage extends BasePage {
 
         getFilePreview().sendKeys(path);
 
-        wait.waitForElementClickable(selectFile);
+        wait.waitForElementToBecomeClickable(selectFile);
 
         clickSubmitAttachButton();
 
-        logger.info("Uploading a file...");
+        log.info("Uploading a file...");
     }
 
 }

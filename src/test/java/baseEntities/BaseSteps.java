@@ -1,7 +1,7 @@
 package baseEntities;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.AccessLevel;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import pages.DashboardPage;
 import pages.IntegrationPage;
@@ -12,10 +12,10 @@ import pages.project.AddProjectPage;
 import pages.project.ProjectInfoPage;
 import pages.project.ProjectsOverviewPage;
 
+@Slf4j(access = AccessLevel.PROTECTED)
 public class BaseSteps {
 
     protected WebDriver driver;
-    protected Logger logger;
     protected LoginPage loginPage;
     protected DashboardPage dashboardPage;
     protected AddProjectPage addProjectPage;
@@ -27,7 +27,6 @@ public class BaseSteps {
 
     public BaseSteps(WebDriver driver) {
         this.driver = driver;
-        this.logger = LogManager.getLogger(BaseSteps.class);
 
         this.loginPage = new LoginPage(driver);
         this.dashboardPage = new DashboardPage(driver, false);

@@ -8,6 +8,7 @@ import utils.Endpoints;
 import static io.restassured.RestAssured.given;
 
 public class ProjectService implements IProjectService {
+
     @Override
     public Project getProject(int id) {
         return given()

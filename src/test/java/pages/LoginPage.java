@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage {
+
     private final static String pagePath = "";
     private final By emailInputLocator = By.id("name");
     private final By passwordInputLocator = By.id("password");

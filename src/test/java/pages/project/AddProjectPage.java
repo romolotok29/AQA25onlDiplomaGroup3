@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class AddProjectPage extends BasePage {
+
     private final static String pagePath = "";
     private final By projectNameInput = By.id("name");
     private final By addProjectButton = By.id("accept");

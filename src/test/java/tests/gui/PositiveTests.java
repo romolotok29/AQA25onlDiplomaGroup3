@@ -11,9 +11,9 @@ import pages.DashboardPage;
 import pages.DetailedSearchPage;
 
 public class PositiveTests extends BaseTest {
-    @Description("Тест на проверку поля для ввода на граничные значения")
+    @Description("Check the Search input field for boundary values")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "Проверка граничных значений", description = "Проверка граничных значений",
+    @Test(testName = "Boundary values", description = "Search input boundary values",
             dataProvider = "boundaryValues", dataProviderClass = StaticProvider.class)
     public void boundaryValuesTest(String inputValue, boolean isValid) {
 
@@ -29,9 +29,9 @@ public class PositiveTests extends BaseTest {
         }
     }
 
-    @Description("Тест на проверку всплывающего сообщения при наведении курсора на кнопку")
+    @Description("Test to check pop-up message when the cursor hovers over a button")
     @Severity(SeverityLevel.MINOR)
-    @Test(testName = "Проверка всплывающего сообщения", description = "Проверка всплывающего сообщения")
+    @Test(testName = "Pop-up window check", description = "Pop-up window check")
     public void hiddenTextTest() {
 
         dashboardPage.moveToElement(dashboardPage.copyToClipboardButton());
@@ -42,9 +42,9 @@ public class PositiveTests extends BaseTest {
 
     }
 
-    @Description("Тест на создание сущности Project с полным заполнением полей")
+    @Description("Project entity creation test")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(testName = "Создание сущности Project", description = "Создание сущности Project")
+    @Test(testName = "Create a Project entity", description = "Create a Project entity")
     public void addFullProjectTest() {
 
         Assert.assertTrue(
@@ -54,9 +54,9 @@ public class PositiveTests extends BaseTest {
         );
     }
 
-    @Description("Создание сущности Milestone с полным заполнением полей")
+    @Description("Milestone entity creation test")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(testName = "Создание сущности Milestone", description = "Создание сущности Milestone",
+    @Test(testName = "Create a Milestone entity", description = "Create a Milestone entity",
             dependsOnMethods = "addFullProjectTest")
     public void addMilestoneTest() {
 
@@ -74,9 +74,9 @@ public class PositiveTests extends BaseTest {
 
     }
 
-    @Description("Тест на проверку удаления сущности Project")
+    @Description("Project entity delete test")
     @Severity(SeverityLevel.BLOCKER)
-    @Test(testName = "Удаление сущности Project", description = "Удаление сущности Project")
+    @Test(testName = "Delete a Project entity", description = "Delete a Project entity")
     public void deleteProjectTest() {
 
         projectSteps
@@ -89,9 +89,9 @@ public class PositiveTests extends BaseTest {
         );
     }
 
-    @Description("Тест на проверку отображения диалогового окна")
+    @Description("Test to check if dialog window is displayed")
     @Severity(SeverityLevel.MINOR)
-    @Test(testName = "Отображение диалогового окна", description = "Отображение диалогового окна")
+    @Test(testName = "Display a dialog window", description = "Display a dialog window")
     public void dialogWindowTest() {
 
         dashboardPage.clickTopMenuSearchButton();
@@ -101,9 +101,9 @@ public class PositiveTests extends BaseTest {
         );
     }
 
-    @Description("Тест на загрузку файла в сущность Milestone")
+    @Description("Test to load file into a Milestone entity")
     @Severity(SeverityLevel.BLOCKER)
-    @Test(testName = "Загрузка файла в Milestone", description = "Загрузка файла в Milestone",
+    @Test(testName = "Load file into a Milestone", description = "Load file into a Milestone",
             dependsOnMethods = {"addFullProjectTest", "addMilestoneTest"})
     public void fileUploadTest() {
 

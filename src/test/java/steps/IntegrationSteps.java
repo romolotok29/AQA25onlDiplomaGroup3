@@ -19,4 +19,5 @@ public class IntegrationSteps extends BaseSteps {
                 .enterJiraApiToken(integration.getApiToken())
                 .clickEnableJiraIntegrationButton();
     }
+
 }

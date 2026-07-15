@@ -7,6 +7,7 @@ import pages.project.AddProjectPage;
 import pages.project.ProjectsOverviewPage;
 
 public class ProjectSteps extends BaseSteps {
+
     public ProjectSteps(WebDriver driver) {
         super(driver);
     }
@@ -33,7 +34,7 @@ public class ProjectSteps extends BaseSteps {
         clickAddProjectSideButton();
         fillProjectInfo(project);
 
-        logger.info("Project added successfully!");
+        log.info("Project added successfully!");
         return projectsOverviewPage;
     }
 
@@ -42,7 +43,7 @@ public class ProjectSteps extends BaseSteps {
         projectsOverviewPage.clickDeleteConfirmationButton();
         projectsOverviewPage.clickDeleteOKButton();
 
-        logger.info("Project deleted successfully!");
+        log.info("Project deleted successfully!");
         return projectsOverviewPage;
     }
 

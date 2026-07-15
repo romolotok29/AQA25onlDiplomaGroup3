@@ -46,7 +46,7 @@ public class DetailedSearchPage extends BasePage {
     }
 
     public WebElement getErrorTitle() {
-        return wait.waitForVisibility(errorTitleLocator);
+        return wait.fluentWaitForElementVisibility(errorTitleLocator);
     }
 
     public String getErrorText() {
@@ -54,7 +54,7 @@ public class DetailedSearchPage extends BasePage {
     }
 
     public WebElement getErrorDialogMessage() {
-        return wait.waitForVisibility(errorDialogMessage);
+        return wait.fluentWaitForElementVisibility(errorDialogMessage);
     }
 
     public String showErrorDialogMessage() {

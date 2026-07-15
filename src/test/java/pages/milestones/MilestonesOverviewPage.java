@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class MilestonesOverviewPage extends BasePage {
+
     private final static String pagePath = "";
     private final By milestonesHeader = By.className("content-header-title");
     private final By milestonesList = By.className("summary-title");

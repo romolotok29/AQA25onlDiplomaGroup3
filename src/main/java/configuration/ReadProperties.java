@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ReadProperties {
+
     private static final Properties properties;
 
     static {
@@ -39,7 +40,6 @@ public class ReadProperties {
     public static boolean headless() {
         return properties.getProperty("headless").equalsIgnoreCase("true");
     }
-
      */
 
 }

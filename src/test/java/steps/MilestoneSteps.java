@@ -1,6 +1,7 @@
 package steps;
 
 import baseEntities.BaseSteps;
+import lombok.extern.slf4j.Slf4j;
 import models.Milestone;
 import models.Project;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +19,7 @@ public class MilestoneSteps extends BaseSteps {
                 .getAddMilestoneToProject()
                 .click();
 
-        logger.info("Adding a milestone...");
+        log.info("Adding a milestone...");
         return addMilestonePage;
     }
 
@@ -37,7 +38,7 @@ public class MilestoneSteps extends BaseSteps {
         clickAddMilestoneSideButton();
         fillMilestoneInfo(milestone);
 
-        logger.info("Milestone added successfully!");
+        log.info("Milestone added successfully!");
         return milestonesOverviewPage;
     }
 
@@ -56,7 +57,7 @@ public class MilestoneSteps extends BaseSteps {
         clickAddMilestoneSideButton();
         fillMilestoneInfoWithFileUpload(milestone);
 
-        logger.info("File uploaded successfully!");
+        log.info("File uploaded successfully!");
     }
 
 }

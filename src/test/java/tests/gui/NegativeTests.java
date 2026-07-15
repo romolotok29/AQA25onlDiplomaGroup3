@@ -12,9 +12,9 @@ import pages.DetailedSearchPage;
 import static data.StaticProvider.MAX_PLUS_ONE;
 
 public class NegativeTests extends BaseTest {
-    @Description("Тест на использование некорректных данных на странице Login")
+    @Description("Using incorrect data to log in test")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(testName = "Использование некорректных данных", description = "Использование некорректных данных")
+    @Test(testName = "Use of incorrect data to log in", description = "Use of incorrect data to log in")
     public void incorrectLoginTest() {
 
         Assert.assertEquals(
@@ -24,9 +24,9 @@ public class NegativeTests extends BaseTest {
         );
     }
 
-    @Description("Тест на ввод данных превышающих допустимое значение поля")
+    @Description("Entering data greater than field allows/Entering data that field not allows test")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "Ввод данных превышающих допустимые", description = "Ввод данных превышающих допустимые",
+    @Test(testName = "Entering data greater than field allows", description = "Entering data greater than field allows",
             dataProvider = "dataExceedsTheLimit", dataProviderClass = StaticProvider.class)
     public void dataExceedsTheLimitTest(String inputValue, boolean isValid) {
 
@@ -55,15 +55,15 @@ public class NegativeTests extends BaseTest {
         }
     }
 
-    @Description("Специально падающий тест для формирования скриншота в allure report")
+    @Description("Special error playback to demonstrate a screenshot generation in allure report when test fails")
     @Severity(SeverityLevel.MINOR)
-    @Test(testName = "Воспроизведение любого дефекта", description = "Воспроизведение любого дефекта")
+    @Test(testName = "Special error playback", description = "Special error playback")
     public void allureScreenshotTest() {
 
         dashboardPage.moveToElement(dashboardPage.copyToClipboardButton());
 
         Assert.assertEquals(
-                dashboardPage.showCopyToClipboardHiddenText(), "Incorrect expected text"
+                dashboardPage.showCopyToClipboardHiddenText(), "Incorrect expected text."
         );
     }
 

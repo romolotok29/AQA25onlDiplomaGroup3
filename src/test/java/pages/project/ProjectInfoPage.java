@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ProjectInfoPage extends BasePage {
+
     private final static String pagePath = "";
     private final By projectTitle = By.cssSelector(".content-header-title");
     private final By addMilestoneLink = By.id("sidebar-milestones-add");

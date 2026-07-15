@@ -12,6 +12,7 @@ import lombok.*;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
+
     private String name;
 
     @EqualsAndHashCode.Exclude

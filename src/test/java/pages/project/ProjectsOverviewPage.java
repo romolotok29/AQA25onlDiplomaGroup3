@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class ProjectsOverviewPage extends BasePage {
+
     private final static String pagePath = "";
     private final By projectsGrid = By.className("grid");
     private final By projectsInGrid = By.cssSelector(".hoverSensitive");

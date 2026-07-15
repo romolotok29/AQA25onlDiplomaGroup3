@@ -21,9 +21,9 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class ApiPostTests extends BaseApiTest {
 
-    @Description("API Post Тест на проверку создания проекта")
+    @Description("Creating a Project entity API test")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "API Post проверка создания проекта", description = "API Post проверка создания проекта")
+    @Test(testName = "Create a project API test", description = "Create a project API test")
     public void addProjectSimpleApiTest() {
         String endpoint = "index.php?/api/v2/add_project";
 
@@ -50,10 +50,10 @@ public class ApiPostTests extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK);
     }
 
-    @Description("API Post Тест на проверку создания проекта cо всеми полями")
+    @Description("Creating a Project entity with all fields API test")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "API Post создание проекта cо всеми полями",
-            description = "API Post создание проекта cо всеми полями")
+    @Test(testName = "Creating a project with all fields",
+            description = "Creating a project with all fields")
     public void addProjectFullApiTest() {
 
         Project expectedProject = new Project();
@@ -78,10 +78,10 @@ public class ApiPostTests extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK);
     }
 
-    @Description("API Post Тест на проверку создания проекта c использованием Json")
+    @Description("Creating a Project entity using Json file test")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "API Post создание проекта c использованием Json",
-            description = "API Post создание проекта c использованием Json")
+    @Test(testName = "Creating a project using Json file",
+            description = "Creating a project using Json file")
     public void addProjectUsingJsonFileTest() {
 
         Response response = given()
@@ -100,8 +100,8 @@ public class ApiPostTests extends BaseApiTest {
 
     }
 
-    @Description("API Post Тест на проверку обновления проекта")
-    @Test(testName = "API Post обновление проекта", description = "API Post обновление проекта")
+    @Description("Update a Project entity API test")
+    @Test(testName = "Update a project API test", description = "Update a project API test")
     public void updateProjectAPITest() {
 
         Project updatedProject = new Project();
@@ -123,12 +123,11 @@ public class ApiPostTests extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK)
                 .body("announcement", equalTo("New Announcement"))
                 .body("show_announcement", equalTo(true));
-
     }
 
-    @Description("Api Post Test на проверку удаления проекта")
+    @Description("Delete a Project entity API test")
     @Severity(SeverityLevel.NORMAL)
-    @Test(testName = "Api Post удаление проекта")
+    @Test(testName = "Delete a project API test")
     public void deleteProjectApiTest() {
 
         given()
@@ -138,7 +137,6 @@ public class ApiPostTests extends BaseApiTest {
                 .then()
                 .log().body()
                 .statusCode(HttpStatus.SC_OK);
-
     }
 
 }

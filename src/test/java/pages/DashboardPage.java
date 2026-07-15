@@ -9,6 +9,7 @@ import pages.project.ProjectInfoPage;
 import java.util.List;
 
 public class DashboardPage extends BasePage {
+
     private final static String pagePath = "/index.php?/dashboard";
     private final By addProjectSideButton = By.id("sidebar-projects-add");
     private final By topMenuUserButton = By.cssSelector(".navigation-username");

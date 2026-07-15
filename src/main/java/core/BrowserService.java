@@ -9,14 +9,15 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
 
 import java.time.Duration;
 
-public class BrowsersService {
+public class BrowserService {
     private WebDriver driver = null;
     private DriverManagerType driverManagerType;
 
-    public BrowsersService(String browser) {
+    public BrowserService(String browser) {
         switch (browser.toLowerCase()) {
             case "chrome":
                 driverManagerType = DriverManagerType.CHROME;
@@ -28,6 +29,10 @@ public class BrowsersService {
                 WebDriverManager.getInstance(driverManagerType).setup();
                 driver = new EdgeDriver(getEdgeOptions());
                 break;
+            case "safari":
+                driverManagerType = DriverManagerType.SAFARI;
+                WebDriverManager.getInstance(driverManagerType).setup();
+                driver = new SafariDriver(getSafariOptions());
             default:
                 System.out.println("Browser " + ReadProperties.browserName() + " is not supported");
                 break;
@@ -62,6 +67,27 @@ public class BrowsersService {
         //edgeOptions.addArguments("--headless");
 
         return edgeOptions;
+    }
+
+    private SafariOptions getSafariOptions() {
+        SafariOptions safariOptions = new SafariOptions();
+
+        // Очищает сессию браузера после каждого теста
+        safariOptions.setCapability("safari.cleanSession", true);
+
+        // Использовать обычный Safari или Safari Technology Preview (если true, то используется Preview версия)
+        safariOptions.setUseTechnologyPreview(false);
+
+        // Включение режима автоматизации (иногда нужно для запуска тестов)
+        safariOptions.setCapability("safari.automaticInspection", false);
+
+        // Отключение автоматической паузы для отладки (Safari может автоматически приостанавливать выполнение для отладки)
+        safariOptions.setCapability("safari.automaticProfiling", false);
+
+        // Установка таймаута команд (опционально, если нужно настроить таймауты для команд WebDriver)
+        //safariOptions.setCapability("timeouts", ImmutableMap.of("implicit", 5000));
+
+        return safariOptions;
     }
 
 }

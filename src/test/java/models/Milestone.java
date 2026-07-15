@@ -1,32 +1,24 @@
 
 package models;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.Objects;
 
+@Getter
+@ToString
 public class Milestone {
+
     private String name;
     private String reference;
     private String description;
     private boolean isCompleted;
 
-    public String getName() {
-        return name;
-    }
-
-    public String getReference() {
-        return reference;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public boolean isCompleted() {
-        return isCompleted;
-    }
-
     public static class Builder {
-        private Milestone newMilestone;
+
+        private final Milestone newMilestone;
 
         public Builder() {
             this.newMilestone = new Milestone();
@@ -68,16 +60,6 @@ public class Milestone {
     @Override
     public int hashCode() {
         return Objects.hash(name);
-    }
-
-    @Override
-    public String toString() {
-        return "Milestone{" +
-                "name='" + name + '\'' +
-                ", reference='" + reference + '\'' +
-                ", description='" + description + '\'' +
-                ", isCompleted=" + isCompleted +
-                '}';
     }
 
 }

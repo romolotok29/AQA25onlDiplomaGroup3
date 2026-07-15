@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class IntegrationPage extends BasePage {
+
      private static final String pagePath = "/index.php?/admin/integration";
      private final By integrationPageIdentifier = By.cssSelector("#settings-integration-tabs-integrations");
      private final By configureIntegrationButton = By.xpath

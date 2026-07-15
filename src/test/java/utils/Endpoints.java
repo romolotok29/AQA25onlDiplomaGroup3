@@ -1,6 +1,7 @@
 package utils;
 
 public class Endpoints {
+
     public static final String GET_USER = "/index.php?/api/v2/get_user/{user_id}";
     public static final String GET_CURRENT_USER = "/index.php?/api/v2/get_current_user/{user_id}";
     public static final String GET_USER_BY_EMAIL = "/index.php?/api/v2/get_user_by_email&email={email}";
