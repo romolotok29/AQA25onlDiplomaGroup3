@@ -1,4 +1,4 @@
-package baseEntities;
+package base_entities;
 import com.google.common.collect.ImmutableMap;
 import configuration.ReadProperties;
 import core.BrowserService;

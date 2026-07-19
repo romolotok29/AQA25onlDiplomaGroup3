@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class WaitsService {
+
     private WebDriverWait wait;
     private WebDriver driver;
     private Duration timeout;

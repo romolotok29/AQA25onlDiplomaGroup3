@@ -1,4 +1,4 @@
-package baseEntities;
+package base_entities;
 
 import configuration.ReadProperties;
 import io.restassured.RestAssured;

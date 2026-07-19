@@ -1,6 +1,6 @@
 package tests.api;
 
-import baseEntities.BaseApiTest;
+import base_entities.BaseApiTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;

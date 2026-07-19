@@ -84,7 +84,7 @@ public class BrowserService {
         // Отключение автоматической паузы для отладки (Safari может автоматически приостанавливать выполнение для отладки)
         safariOptions.setCapability("safari.automaticProfiling", false);
 
-        // Установка таймаута команд (опционально, если нужно настроить таймауты для команд WebDriver)
+        // Установка тайм-аута команд (опционально, если нужно настроить тайм-ауты для команд WebDriver)
         //safariOptions.setCapability("timeouts", ImmutableMap.of("implicit", 5000));
 
         return safariOptions;

@@ -1,7 +1,6 @@
 package steps;
 
-import baseEntities.BaseSteps;
-import lombok.extern.slf4j.Slf4j;
+import base_entities.BaseSteps;
 import models.Milestone;
 import models.Project;
 import org.openqa.selenium.WebDriver;

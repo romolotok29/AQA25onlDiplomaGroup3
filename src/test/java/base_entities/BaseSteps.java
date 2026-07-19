@@ -1,4 +1,4 @@
-package baseEntities;
+package base_entities;
 
 import lombok.AccessLevel;
 import lombok.extern.slf4j.Slf4j;

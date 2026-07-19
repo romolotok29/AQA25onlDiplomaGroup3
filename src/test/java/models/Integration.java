@@ -1,5 +1,10 @@
 package models;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Integration {
 
     private String address;
@@ -7,19 +12,4 @@ public class Integration {
     private String email;
     private String apiToken;
 
-    public String getAddress() {
-        return address;
-    }
-
-    public int getVersion() {
-        return version;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getApiToken() {
-        return apiToken;
-    }
 }

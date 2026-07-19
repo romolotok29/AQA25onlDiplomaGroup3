@@ -1,6 +1,6 @@
 package tests.api;
 
-import baseEntities.BaseApiTest;
+import base_entities.BaseApiTest;
 import com.google.gson.Gson;
 import configuration.ReadProperties;
 import io.qameta.allure.Description;

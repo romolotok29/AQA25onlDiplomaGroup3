@@ -15,7 +15,7 @@ public class StaticProvider {
         };
     }
 
-    @DataProvider(name = "dataExceedsTheLimit")
+    @DataProvider(name = "inputDataExceedsTheLimit")
     public static Object[][] dataExceedsTheLimit() {
         return new Object[][] {
                 {"!!!", false},

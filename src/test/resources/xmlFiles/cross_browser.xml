@@ -4,7 +4,7 @@
     <test name="Chrome Test">
         <parameter name="browser" value="chrome">
             <classes>
-                <class name="tests.gui.NegativeTests">
+                <class name="tests.ui.NegativeTests">
                     <methods>
                         <include name="incorrectLoginTest"/>
                     </methods>
@@ -15,7 +15,7 @@
     <test name="Edge Test">
         <parameter name="browser" value="edge">
             <classes>
-                <class name="tests.gui.PositiveTests">
+                <class name="tests.ui.PositiveTests">
                     <methods>
                         <include name="hiddenTextTest"/>
                     </methods>

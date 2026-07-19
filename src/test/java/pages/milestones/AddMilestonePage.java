@@ -1,6 +1,6 @@
 package pages.milestones;
 
-import baseEntities.BasePage;
+import base_entities.BasePage;
 import lombok.extern.slf4j.Slf4j;
 import models.Milestone;
 import org.openqa.selenium.By;

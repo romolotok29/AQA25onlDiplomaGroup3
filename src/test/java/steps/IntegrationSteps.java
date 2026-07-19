@@ -1,6 +1,6 @@
 package steps;
 
-import baseEntities.BaseSteps;
+import base_entities.BaseSteps;
 import models.Integration;
 import org.openqa.selenium.WebDriver;
 

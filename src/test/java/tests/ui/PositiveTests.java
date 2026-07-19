@@ -1,6 +1,6 @@
-package tests.gui;
+package tests.ui;
 
-import baseEntities.BaseTest;
+import base_entities.BaseTest;
 import data.StaticProvider;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;

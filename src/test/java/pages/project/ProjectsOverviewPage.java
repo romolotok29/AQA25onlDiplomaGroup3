@@ -1,6 +1,6 @@
 package pages.project;
 
-import baseEntities.BasePage;
+import base_entities.BasePage;
 import models.Project;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -3,8 +3,8 @@
 <suite name="Diploma Suite" parallel="classes" thread-count="4">
     <test name="Smoke">
         <classes>
-            <class name="tests.gui.PositiveTests"/>
-            <class name="tests.gui.NegativeTests"/>
+            <class name="tests.ui.PositiveTests"/>
+            <class name="tests.ui.NegativeTests"/>
         </classes>
     </test>
     <test name="Regression">

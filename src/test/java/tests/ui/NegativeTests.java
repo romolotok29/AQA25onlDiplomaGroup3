@@ -1,18 +1,19 @@
-package tests.gui;
+package tests.ui;
 
-import baseEntities.BaseTest;
+import base_entities.BaseTest;
 import data.StaticProvider;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DetailedSearchPage;
 
 import static data.StaticProvider.MAX_PLUS_ONE;
 
+@Story("")
 public class NegativeTests extends BaseTest {
-    @Description("Using incorrect data to log in test")
+
+    @Feature("")
+    @Description("Invalid login credentials should be rejected with appropriate message")
     @Severity(SeverityLevel.CRITICAL)
     @Test(testName = "Use of incorrect data to log in", description = "Use of incorrect data to log in")
     public void incorrectLoginTest() {
@@ -24,10 +25,11 @@ public class NegativeTests extends BaseTest {
         );
     }
 
+    @Feature("")
     @Description("Entering data greater than field allows/Entering data that field not allows test")
     @Severity(SeverityLevel.NORMAL)
     @Test(testName = "Entering data greater than field allows", description = "Entering data greater than field allows",
-            dataProvider = "dataExceedsTheLimit", dataProviderClass = StaticProvider.class)
+            dataProvider = "inputDataExceedsTheLimit", dataProviderClass = StaticProvider.class)
     public void dataExceedsTheLimitTest(String inputValue, boolean isValid) {
 
         detailedSearchPage = new DetailedSearchPage(driver, true);
